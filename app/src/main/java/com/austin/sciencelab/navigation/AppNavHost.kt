@@ -14,8 +14,19 @@ import com.austin.sciencelab.ui.screens.auth.RegisterScreen
 import com.austin.sciencelab.viewmodel.AuthViewModel
 import com.austin.sciencelab.data.UserDatabase
 import com.austin.sciencelab.ui.screens.about.AboutScreen
+import com.austin.sciencelab.ui.screens.books.BooksScreen
+import com.austin.sciencelab.ui.screens.books2.Books2Screen
 import com.austin.sciencelab.ui.screens.home.HomeScreen
+import com.austin.sciencelab.ui.screens.inorganic.InorganicScreen
+import com.austin.sciencelab.ui.screens.organic.OrganicScreen
+import com.austin.sciencelab.ui.screens.qualitative.QualitativeScreen
+import com.austin.sciencelab.ui.screens.quantitative.QuantitativeScreen
+import com.austin.sciencelab.ui.screens.reactionrates.ReactionScreen
 import com.austin.sciencelab.ui.screens.splash.SplashScreen
+import com.austin.sciencelab.ui.screens.science1.Science1Screen
+import com.austin.sciencelab.ui.screens.science2.Science2Screen
+import com.austin.sciencelab.ui.screens.virtuallabs1.VirtualLabs1Screen
+import com.austin.sciencelab.ui.screens.virtuallabs2.VirtualLabs2Screen
 
 
 @Composable
@@ -45,7 +56,47 @@ fun AppNavHost(
         }
 
         composable(ROUT_SCIENCE1) {
-            SplashScreen(navController)
+            Science1Screen(navController)
+        }
+
+        composable(ROUT_SCIENCE2) {
+            Science2Screen(navController)
+        }
+
+        composable(ROUT_VIRTUALLABS1) {
+            VirtualLabs1Screen(navController)
+        }
+
+        composable(ROUT_VIRTUALLABS2) {
+            VirtualLabs2Screen(navController)
+        }
+
+        composable(ROUT_QUALITATIVE) {
+           QualitativeScreen(navController)
+        }
+
+        composable(ROUT_BOOKS) {
+            BooksScreen(navController)
+        }
+
+        composable(ROUT_BOOKS2) {
+            Books2Screen(navController)
+        }
+
+        composable(ROUT_QUANTITATIVE) {
+            QuantitativeScreen(navController)
+        }
+
+        composable(ROUT_ORGANIC) {
+            OrganicScreen(navController)
+        }
+
+        composable(ROUT_INORGANIC) {
+            InorganicScreen(navController)
+        }
+
+        composable(ROUT_REACTION) {
+            ReactionScreen(navController)
         }
 
 

@@ -45,7 +45,7 @@ fun Science1Screen(navController: NavController){
 
 
         Image(
-            painter = painterResource(R.drawable.smallest),
+            painter = painterResource(R.drawable.discrete),
             contentDescription = "limit",
             modifier= Modifier.size(300.dp).clip(shape = CircleShape),
             contentScale = ContentScale.Crop,
@@ -68,13 +68,22 @@ fun Science1Screen(navController: NavController){
         Text(
             text = "Basic introduction",
             fontSize = 15.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            color = lightGreen,
         )
 
         Spacer(modifier = Modifier.height(10.dp))
 
         Text(
             text = "This is an introduction to a series of slides that make students interact with constituents of matter, energy, compounds",
+            fontSize = 15.sp,
+            textAlign = TextAlign.Center,
+            color = lightGreen
+        )
+        Spacer(modifier = Modifier.height(25.dp))
+
+        Text(
+            text = "Learners interact with Physics and Chemistry questions as well as notes.",
             fontSize = 15.sp,
             textAlign = TextAlign.Center,
             color = lightGreen
@@ -95,14 +104,13 @@ fun Science1Screen(navController: NavController){
             Text(text = "Get started")
         }
     }
+
 }
 
 
 
 
-
-
-@Preview(showBackground = true)
+@Preview
 @Composable
 fun Science1ScreenPreview(){
     Science1Screen(rememberNavController())

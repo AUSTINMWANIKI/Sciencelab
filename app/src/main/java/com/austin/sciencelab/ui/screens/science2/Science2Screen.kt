@@ -1,11 +1,9 @@
-package com.austin.sciencelab.ui.screens.about
+package com.austin.sciencelab.ui.screens.science2
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,14 +14,16 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.paint
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,47 +33,67 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.austin.sciencelab.R
 import com.austin.sciencelab.navigation.ROUT_ABOUT
-import com.austin.sciencelab.navigation.ROUT_SCIENCE1
-import com.austin.sciencelab.navigation.ROUT_SCIENCE2
 import com.austin.sciencelab.ui.theme.lightGreen
 
-
 @Composable
-fun AboutScreen(navController: NavController){
+fun Science2Screen(navController: NavController){
     Column (
-        modifier = Modifier.background(color = Color.White).height(1000.dp),
+        modifier = Modifier.fillMaxSize().background(color = Color.White),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Spacer(modifier = Modifier.height(90.dp))
+
 
         Image(
-            painter = painterResource(R.drawable.tube),
-            contentDescription = "marketable",
-            modifier = Modifier.size(300.dp),
-            alignment = Alignment.Center,
+            painter = painterResource(R.drawable.helix),
+            contentDescription = "limit",
+            modifier= Modifier.size(300.dp).clip(shape = CircleShape),
+            contentScale = ContentScale.Crop,
         )
 
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Divider()
+
         Text(
-            text = "About Us",
-            color = lightGreen,
+            text = "Biological sciences",
             fontSize = 40.sp,
+            color = lightGreen,
+            fontFamily = FontFamily.Cursive,
             fontWeight = FontWeight.Bold,
         )
-        Spacer(modifier = Modifier.height(30.dp))
+
+        Spacer(modifier = Modifier.height(10.dp))
 
         Text(
-            text = "Sciencelab is a mobile application with questions both on theory and labwork that students get to do digitally during holidays across areas in Biology, Chemistry and Physics. ",
-            textAlign = TextAlign.Center,
-            fontSize = 20.sp,
+            text = "Basic introduction",
+            fontSize = 15.sp,
+            fontWeight = FontWeight.Bold,
             color = lightGreen,
+        )
 
-            )
-        Spacer(modifier = Modifier.height(60.dp))
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Text(
+            text = "This is an introduction to a series of slides that make students interact with areas such as Botany and Zoology ",
+            fontSize = 15.sp,
+            textAlign = TextAlign.Center,
+            color = lightGreen
+        )
+        Spacer(modifier = Modifier.height(25.dp))
+
+        Text(
+            text = "Learners who take Biology get to interact with questions as well as notes.",
+            fontSize = 15.sp,
+            textAlign = TextAlign.Center,
+            color = lightGreen
+        )
+
+        Spacer(modifier = Modifier.height(90.dp))
 
         Button(
             onClick = {
-                navController.navigate(ROUT_SCIENCE1)
+                navController.navigate(ROUT_ABOUT)
             },
             colors = ButtonDefaults.buttonColors(lightGreen),
             shape = RoundedCornerShape(10.dp),
@@ -81,14 +101,12 @@ fun AboutScreen(navController: NavController){
         )
 
         {
-            Text(text = "Next slide")
+            Text(text = "Get started")
         }
-
-
     }
-
-
 }
+
+
 
 
 
@@ -97,6 +115,6 @@ fun AboutScreen(navController: NavController){
 
 @Preview(showBackground = true)
 @Composable
-fun AboutScreenPreview(){
-    AboutScreen(rememberNavController())
+fun Science2ScreenPreview(){
+    Science2Screen(rememberNavController())
 }
