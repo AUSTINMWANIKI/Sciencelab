@@ -58,7 +58,7 @@ fun RegisterScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .paint(painter = painterResource(R.drawable.tube), contentScale = ContentScale.FillBounds),
+            .paint(painter = painterResource(R.drawable.scope), contentScale = ContentScale.FillBounds),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -79,7 +79,7 @@ fun RegisterScreen(
             onValueChange = { username = it },
             label = { Text("Username", fontWeight = FontWeight.Light, color = Color.Black) },
             leadingIcon = { Icon(Icons.Filled.Person, contentDescription = "Username Icon") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
         )
         //End of username
 
@@ -94,7 +94,7 @@ fun RegisterScreen(
             label = { Text("Email",fontWeight = FontWeight.Light, color = Color.Black) },
             leadingIcon = { Icon(Icons.Filled.Email, contentDescription = "Email Icon") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
         )
         //End of email
 
@@ -118,7 +118,7 @@ fun RegisterScreen(
                 readOnly = true,
                 label = { Text("Select Role") },
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                modifier = Modifier.menuAnchor().fillMaxWidth()
+                modifier = Modifier.menuAnchor().fillMaxWidth().padding(start = 20.dp, end = 20.dp)
             )
             ExposedDropdownMenu(
                 expanded = expanded,
@@ -156,7 +156,7 @@ fun RegisterScreen(
                 }
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -175,7 +175,7 @@ fun RegisterScreen(
                 }
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
         )
 
         Spacer(modifier = Modifier.height(15.dp))
@@ -183,6 +183,7 @@ fun RegisterScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
+                .padding(start = 20.dp, end = 20.dp)
                 .height(50.dp)
                 .background(
                     brush = Brush.horizontalGradient(
@@ -218,7 +219,7 @@ fun RegisterScreen(
         TextButton(
             onClick = { navController.navigate(ROUT_LOGIN) }
         ) {
-            Text("Already have an account? Login", fontFamily = FontFamily.Cursive, fontSize = 30.sp)
+            Text("Already have an account? Login", fontSize = 15.sp)
         }
     }
 }

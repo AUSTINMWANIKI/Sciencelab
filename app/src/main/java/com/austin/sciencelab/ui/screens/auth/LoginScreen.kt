@@ -72,8 +72,9 @@ fun LoginScreen(
             modifier = Modifier
                 .fillMaxHeight()
                 .fillMaxWidth()
+
                 .background(lightGreen)
-                .paint(painter = painterResource(R.drawable.tube), contentScale = ContentScale.FillBounds),
+                .paint(painter = painterResource(R.drawable.scope), contentScale = ContentScale.FillBounds),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
 
@@ -152,6 +153,7 @@ fun LoginScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(start = 20.dp, end = 20.dp)
                     .height(50.dp)
                     .background(
                         brush = Brush.horizontalGradient(
@@ -186,7 +188,7 @@ fun LoginScreen(
 
             // Register Navigation Button
             TextButton(onClick = { navController.navigate(ROUT_REGISTER) }) {
-                Text("Don't have an account? Register", fontFamily = FontFamily.Cursive, fontSize = 30.sp, color = Color.Black)
+                Text("Don't have an account? Register", fontSize = 15.sp, color = Color.Black)
             }
 
 

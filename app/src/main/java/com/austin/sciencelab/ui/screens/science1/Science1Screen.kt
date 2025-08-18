@@ -33,6 +33,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.austin.sciencelab.R
 import com.austin.sciencelab.navigation.ROUT_ABOUT
+import com.austin.sciencelab.navigation.ROUT_SCIENCE2
 import com.austin.sciencelab.ui.theme.lightGreen
 
 @Composable
@@ -77,23 +78,21 @@ fun Science1Screen(navController: NavController){
         Text(
             text = "This is an introduction to a series of slides that make students interact with constituents of matter, energy, compounds",
             fontSize = 15.sp,
-            textAlign = TextAlign.Center,
-            color = lightGreen
+            textAlign = TextAlign.Center
         )
         Spacer(modifier = Modifier.height(25.dp))
 
         Text(
             text = "Learners interact with Physics and Chemistry questions as well as notes.",
             fontSize = 15.sp,
-            textAlign = TextAlign.Center,
-            color = lightGreen
+            textAlign = TextAlign.Center
         )
 
         Spacer(modifier = Modifier.height(90.dp))
 
         Button(
             onClick = {
-                navController.navigate(ROUT_ABOUT)
+                navController.navigate(ROUT_SCIENCE2)
             },
             colors = ButtonDefaults.buttonColors(lightGreen),
             shape = RoundedCornerShape(10.dp),

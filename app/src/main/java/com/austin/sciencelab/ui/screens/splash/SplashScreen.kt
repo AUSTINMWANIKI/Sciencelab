@@ -1,87 +1,96 @@
 package com.austin.sciencelab.ui.screens.splash
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.airbnb.lottie.compose.LottieAnimation
-import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.animateLottieCompositionAsState
-import com.airbnb.lottie.compose.rememberLottieComposition
+import com.airbnb.lottie.compose.*
 import com.austin.sciencelab.R
 import com.austin.sciencelab.navigation.ROUT_REGISTER
 import com.austin.sciencelab.ui.theme.lightGreen
 import kotlinx.coroutines.delay
 
-
 @Composable
-fun SplashScreen(navController: NavController){
+fun SplashScreen(navController: NavController) {
 
-    // Runs only once when the Composable enters the composition
+    // Navigate after delay
     LaunchedEffect(Unit) {
-        delay(2000)
-        navController.navigate(ROUT_REGISTER)
+        delay(2500)
+        navController.navigate(ROUT_REGISTER) {
+            popUpTo(0) // clears splash from backstack
+        }
     }
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize() ,
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.SpaceEvenly // space out content across full screen
     ) {
-        // Lottie Animation
+        // Top: App Title
+        Text(
+            text = "⚛ ScienceLab",
+            fontSize = 36.sp,
+            fontWeight = FontWeight.Bold,
+            color = lightGreen,
+            textAlign = TextAlign.Center
+        )
+
+        // Middle: Lottie Animation
         val composition by rememberLottieComposition(
             LottieCompositionSpec.RawRes(R.raw.boyreadscience)
         )
-        val progress by animateLottieCompositionAsState(composition)
+        val progress by animateLottieCompositionAsState(composition, iterations = LottieConstants.IterateForever)
 
         LottieAnimation(
             composition,
             progress,
-            modifier = Modifier.size(300.dp)
+            modifier = Modifier.size(250.dp)
         )
 
-        Spacer(modifier = Modifier.height(10.dp))
-
+        // Tagline
         Text(
-            text = "Curiosity is the compass, knowledge is the journey",
+            text = "Curiosity is the compass,\nKnowledge is the journey",
             fontSize = 18.sp,
+            fontWeight = FontWeight.Medium,
+            textAlign = TextAlign.Center,
             color = lightGreen,
+            modifier = Modifier.padding(horizontal = 24.dp)
         )
 
-        Spacer(modifier = Modifier.height(10.dp))
+        // Extra inspirational note
+        Text(
+            text = "🔬 Explore • Discover • Learn",
+            fontSize = 16.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = lightGreen
+        )
 
-
-
-        Spacer(modifier = Modifier.height(10.dp))
-
+        // Bottom: Progress indicator
         CircularProgressIndicator(
             color = lightGreen,
+            strokeWidth = 4.dp,
+            modifier = Modifier.size(48.dp)
         )
     }
 }
 
-
-
-
-
-
-@Preview
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun SplashScreenPreview(){
+fun SplashScreenPreview() {
     SplashScreen(rememberNavController())
 }

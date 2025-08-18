@@ -1,15 +1,12 @@
-package com.austin.sciencelab.ui.screens.quantitative
+package com.austin.sciencelab.ui.screens.physics
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -25,76 +22,47 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.austin.sciencelab.R
-import com.austin.sciencelab.navigation.*
 import com.austin.sciencelab.ui.theme.lightGreen
 
-data class Question(
+data class ThermoQuestion(
     val text: String,
     val options: List<String>,
     val answerIndex: Int
 )
 
-data class LabTopic(val title: String, val imageRes: Int, val route: String)
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun QuantitativeScreen(navController: NavController) {
-
+fun ThermodynamicsPracticalScreen(navController: NavController) {
     val scrollState = rememberScrollState()
-    val horizontalScroll = rememberScrollState()
 
-    val quickAccessTopics = listOf(
-        LabTopic("Quantitative", R.drawable.land, ROUT_QUANTITATIVE),
-        LabTopic("Qualitative", R.drawable.land, ROUT_QUALITATIVE),
-        LabTopic("Organic", R.drawable.land, ROUT_ORGANIC),
-        LabTopic("Inorganic", R.drawable.land, ROUT_INORGANIC),
-        LabTopic("Energy", R.drawable.land, ROUT_ENERGY),
-        LabTopic("Reaction", R.drawable.land, ROUT_REACTION),
-        LabTopic("VirtualLabs", R.drawable.land, ROUT_VIRTUALLABS2),
-    )
-
+    // Sample Thermodynamics Practical Questions
     val questions = listOf(
-        Question(
-            text = "What is the molarity of a solution containing 0.5 moles of solute in 1 liter of solution?",
-            options = listOf("0.25 M", "0.5 M", "1 M", "2 M"),
+        ThermoQuestion(
+            text = "Which process occurs without heat exchange with the surroundings?",
+            options = listOf("Isothermal", "Adiabatic", "Isobaric", "Isochoric"),
             answerIndex = 1
         ),
-        Question(
-            text = "How many grams of NaCl are in 0.1 moles?",
-            options = listOf("5.85 g", "2.5 g", "10 g", "0.1 g"),
-            answerIndex = 0
-        ),
-        Question(
-            text = "Which method is commonly used for quantitative analysis of metal ions?",
-            options = listOf("Gravimetric analysis", "Qualitative analysis", "Flame test", "pH test"),
-            answerIndex = 0
-        ),
-        Question(
-            text = "The percentage composition of an element in a compound can be calculated using:",
-            options = listOf("Mass of element / Mass of compound × 100", "Volume of solution", "Density of compound", "pH value"),
-            answerIndex = 0
-        ),
-        Question(
-            text = "Which titration type involves an acid and a base?",
-            options = listOf("Redox titration", "Complexometric titration", "Acid-base titration", "Gravimetric titration"),
-            answerIndex = 2
-        ),
-        Question(
-            text = "In gravimetric analysis, the product is usually:",
-            options = listOf("A gas", "A pure solid", "A liquid", "A colloid"),
+        ThermoQuestion(
+            text = "What is the formula for work done in an isothermal expansion?",
+            options = listOf("W = PΔV", "W = nRT ln(Vf/Vi)", "W = mgh", "W = Fd"),
             answerIndex = 1
+        ),
+        ThermoQuestion(
+            text = "Which instrument measures temperature change in calorimetry?",
+            options = listOf("Thermometer", "Barometer", "Voltmeter", "Hygrometer"),
+            answerIndex = 0
+        ),
+        ThermoQuestion(
+            text = "During a phase change, what remains constant?",
+            options = listOf("Temperature", "Pressure", "Volume", "Mass"),
+            answerIndex = 0
         )
     )
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Quantitative Analysis", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
-                navigationIcon = {
-                    IconButton(onClick = { /* Handle back navigation */ }) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
-                    }
-                },
+                title = { Text("Thermodynamics Practical", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = lightGreen)
             )
         },
@@ -105,7 +73,7 @@ fun QuantitativeScreen(navController: NavController) {
                     Spacer(modifier = Modifier.weight(1f))
                     Text(
                         text = "© ScienceLab 2025",
-                        fontSize = 14.sp,
+                        fontSize = 15.sp,
                         color = Color.White,
                         modifier = Modifier.padding(16.dp)
                     )
@@ -117,76 +85,48 @@ fun QuantitativeScreen(navController: NavController) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .verticalScroll(scrollState)
                     .padding(paddingValues)
-                    .background(Color(0xFFF5F5F5))
+                    .verticalScroll(scrollState)
+                    .background(MaterialTheme.colorScheme.background)
             ) {
 
                 // Banner Image
                 Image(
                     painter = painterResource(R.drawable.land),
-                    contentDescription = "Chemistry Banner",
+                    contentDescription = "Thermodynamics Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(180.dp)
+                        .height(200.dp)
                         .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Horizontal Quick-Access Topics
-                Row(
+                // Intro Text
+                Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .horizontalScroll(horizontalScroll)
-                        .padding(start = 16.dp)
+                        .padding(horizontal = 16.dp),
+                    horizontalAlignment = Alignment.Start
                 ) {
-                    quickAccessTopics.forEach { topic ->
-                        Card(
-                            modifier = Modifier
-                                .size(width = 140.dp, height = 120.dp)
-                                .padding(end = 12.dp)
-                                .clickable { navController.navigate(topic.route) },
-                            shape = RoundedCornerShape(12.dp),
-                            elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
-                        ) {
-                            Box(modifier = Modifier.fillMaxSize()) {
-                                Image(
-                                    painter = painterResource(topic.imageRes),
-                                    contentDescription = topic.title,
-                                    contentScale = ContentScale.Crop,
-                                    modifier = Modifier.fillMaxSize()
-                                )
-                                Box(
-                                    modifier = Modifier
-                                        .fillMaxSize()
-                                        .background(Color(0x80000000))
-                                )
-                                Text(
-                                    text = topic.title,
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Bold,
-                                    modifier = Modifier.align(Alignment.Center)
-                                )
-                            }
-                        }
-                    }
+                    Text(
+                        text = "Perform Thermodynamics Experiments",
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "Answer the following questions based on thermodynamics practical experiments.",
+                        fontSize = 16.sp
+                    )
                 }
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                Text(
-                    text = "Interactive Questions:",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
-
-                Spacer(modifier = Modifier.height(16.dp))
-
+                // Questions Section
                 questions.forEachIndexed { index, question ->
-                    QuestionCard(number = index + 1, question = question)
+                    ThermoQuestionCard(number = index + 1, question = question)
                     Spacer(modifier = Modifier.height(16.dp))
                 }
 
@@ -197,7 +137,7 @@ fun QuantitativeScreen(navController: NavController) {
 }
 
 @Composable
-fun QuestionCard(number: Int, question: Question) {
+fun ThermoQuestionCard(number: Int, question: ThermoQuestion) {
     var selectedOption by remember { mutableStateOf<Int?>(null) }
     var showAnswer by remember { mutableStateOf(false) }
 
@@ -271,6 +211,6 @@ fun QuestionCard(number: Int, question: Question) {
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun QuantitativeScreenPreview() {
-    QuantitativeScreen(rememberNavController())
+fun ThermodynamicsPracticalScreenPreview() {
+    ThermodynamicsPracticalScreen(rememberNavController())
 }

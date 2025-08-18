@@ -1,4 +1,4 @@
-package com.austin.sciencelab.ui.screens.quantitative
+package com.austin.sciencelab.ui.screens.energychanges
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -28,18 +28,17 @@ import com.austin.sciencelab.R
 import com.austin.sciencelab.navigation.*
 import com.austin.sciencelab.ui.theme.lightGreen
 
+data class LabTopic(val title: String, val imageRes: Int, val route: String)
+
 data class Question(
     val text: String,
     val options: List<String>,
     val answerIndex: Int
 )
 
-data class LabTopic(val title: String, val imageRes: Int, val route: String)
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun QuantitativeScreen(navController: NavController) {
-
+fun EnergyChangesScreen(navController: NavController) {
     val scrollState = rememberScrollState()
     val horizontalScroll = rememberScrollState()
 
@@ -50,48 +49,38 @@ fun QuantitativeScreen(navController: NavController) {
         LabTopic("Inorganic", R.drawable.land, ROUT_INORGANIC),
         LabTopic("Energy", R.drawable.land, ROUT_ENERGY),
         LabTopic("Reaction", R.drawable.land, ROUT_REACTION),
-        LabTopic("VirtualLabs", R.drawable.land, ROUT_VIRTUALLABS2),
+        LabTopic("VirtualLabs2", R.drawable.land, ROUT_VIRTUALLABS2),
     )
 
     val questions = listOf(
         Question(
-            text = "What is the molarity of a solution containing 0.5 moles of solute in 1 liter of solution?",
-            options = listOf("0.25 M", "0.5 M", "1 M", "2 M"),
+            "Which reaction is exothermic?",
+            listOf("HCl + NaOH", "NH₄Cl + H₂O"),
+            answerIndex = 0
+        ),
+        Question(
+            "Why is a polystyrene cup used in this experiment?",
+            listOf("It’s cheap", "It insulates heat", "It looks good", "It reacts with chemicals"),
             answerIndex = 1
         ),
         Question(
-            text = "How many grams of NaCl are in 0.1 moles?",
-            options = listOf("5.85 g", "2.5 g", "10 g", "0.1 g"),
-            answerIndex = 0
-        ),
-        Question(
-            text = "Which method is commonly used for quantitative analysis of metal ions?",
-            options = listOf("Gravimetric analysis", "Qualitative analysis", "Flame test", "pH test"),
-            answerIndex = 0
-        ),
-        Question(
-            text = "The percentage composition of an element in a compound can be calculated using:",
-            options = listOf("Mass of element / Mass of compound × 100", "Volume of solution", "Density of compound", "pH value"),
-            answerIndex = 0
-        ),
-        Question(
-            text = "Which titration type involves an acid and a base?",
-            options = listOf("Redox titration", "Complexometric titration", "Acid-base titration", "Gravimetric titration"),
-            answerIndex = 2
-        ),
-        Question(
-            text = "In gravimetric analysis, the product is usually:",
-            options = listOf("A gas", "A pure solid", "A liquid", "A colloid"),
+            "Which observation indicates an endothermic reaction?",
+            listOf("Temperature rises", "Temperature falls"),
             answerIndex = 1
+        ),
+        Question(
+            "How can energy loss to surroundings be minimized?",
+            listOf("Use a lid", "Stir faster", "Add more reactants", "Use glass beaker"),
+            answerIndex = 0
         )
     )
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Quantitative Analysis", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
+                title = { Text("Energy Changes Practical", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
                 navigationIcon = {
-                    IconButton(onClick = { /* Handle back navigation */ }) {
+                    IconButton(onClick = { /* Handle back */ }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                 },
@@ -104,7 +93,7 @@ fun QuantitativeScreen(navController: NavController) {
                 content = {
                     Spacer(modifier = Modifier.weight(1f))
                     Text(
-                        text = "© ScienceLab 2025",
+                        "© ScienceLab 2025",
                         fontSize = 14.sp,
                         color = Color.White,
                         modifier = Modifier.padding(16.dp)
@@ -119,13 +108,12 @@ fun QuantitativeScreen(navController: NavController) {
                     .fillMaxSize()
                     .verticalScroll(scrollState)
                     .padding(paddingValues)
-                    .background(Color(0xFFF5F5F5))
+                    .background(Color(0xFFF5FCF8))
             ) {
-
-                // Banner Image
+                // Banner
                 Image(
-                    painter = painterResource(R.drawable.land),
-                    contentDescription = "Chemistry Banner",
+                    painter = painterResource(R.drawable.equipment),
+                    contentDescription = "Energy Changes Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -135,7 +123,7 @@ fun QuantitativeScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Horizontal Quick-Access Topics
+                // Horizontal Quick-Access
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -145,7 +133,7 @@ fun QuantitativeScreen(navController: NavController) {
                     quickAccessTopics.forEach { topic ->
                         Card(
                             modifier = Modifier
-                                .size(width = 140.dp, height = 120.dp)
+                                .size(140.dp, 120.dp)
                                 .padding(end = 12.dp)
                                 .clickable { navController.navigate(topic.route) },
                             shape = RoundedCornerShape(12.dp),
@@ -153,7 +141,7 @@ fun QuantitativeScreen(navController: NavController) {
                         ) {
                             Box(modifier = Modifier.fillMaxSize()) {
                                 Image(
-                                    painter = painterResource(topic.imageRes),
+                                    painter = painterResource(R.drawable.equipment),
                                     contentDescription = topic.title,
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier.fillMaxSize()
@@ -164,7 +152,7 @@ fun QuantitativeScreen(navController: NavController) {
                                         .background(Color(0x80000000))
                                 )
                                 Text(
-                                    text = topic.title,
+                                    topic.title,
                                     color = Color.White,
                                     fontWeight = FontWeight.Bold,
                                     modifier = Modifier.align(Alignment.Center)
@@ -176,8 +164,9 @@ fun QuantitativeScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
+                // Questions
                 Text(
-                    text = "Interactive Questions:",
+                    "Interactive Questions:",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier.padding(horizontal = 16.dp)
@@ -186,7 +175,7 @@ fun QuantitativeScreen(navController: NavController) {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 questions.forEachIndexed { index, question ->
-                    QuestionCard(number = index + 1, question = question)
+                    QuestionCardModern(number = index + 1, question = question)
                     Spacer(modifier = Modifier.height(16.dp))
                 }
 
@@ -197,7 +186,7 @@ fun QuantitativeScreen(navController: NavController) {
 }
 
 @Composable
-fun QuestionCard(number: Int, question: Question) {
+fun QuestionCardModern(number: Int, question: Question) {
     var selectedOption by remember { mutableStateOf<Int?>(null) }
     var showAnswer by remember { mutableStateOf(false) }
 
@@ -210,17 +199,17 @@ fun QuestionCard(number: Int, question: Question) {
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "$number. ${question.text}",
+                "$number. ${question.text}",
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 16.sp
             )
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            question.options.forEachIndexed { optionIndex, optionText ->
-                val isSelected = selectedOption == optionIndex
-                val isCorrect = optionIndex == question.answerIndex
-                val backgroundColor = when {
+            question.options.forEachIndexed { idx, option ->
+                val isSelected = selectedOption == idx
+                val isCorrect = idx == question.answerIndex
+                val bgColor = when {
                     showAnswer && isCorrect -> Color(0xFF4CAF50)
                     showAnswer && isSelected && !isCorrect -> Color(0xFFF44336)
                     else -> Color(0xFFF0F0F0)
@@ -230,18 +219,17 @@ fun QuestionCard(number: Int, question: Question) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable {
-                            selectedOption = optionIndex
+                            selectedOption = idx
                             showAnswer = true
                         }
-                        .padding(8.dp)
-                        .background(backgroundColor, RoundedCornerShape(8.dp))
+                        .background(bgColor, RoundedCornerShape(8.dp))
                         .padding(12.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     RadioButton(
                         selected = isSelected,
                         onClick = {
-                            selectedOption = optionIndex
+                            selectedOption = idx
                             showAnswer = true
                         },
                         colors = RadioButtonDefaults.colors(
@@ -251,7 +239,7 @@ fun QuestionCard(number: Int, question: Question) {
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = optionText,
+                        option,
                         color = if (showAnswer && (isSelected || isCorrect)) Color.White else Color.Black
                     )
                 }
@@ -271,6 +259,6 @@ fun QuestionCard(number: Int, question: Question) {
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun QuantitativeScreenPreview() {
-    QuantitativeScreen(rememberNavController())
+fun EnergyChangesScreenPreview() {
+    EnergyChangesScreen(rememberNavController())
 }

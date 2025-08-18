@@ -1,32 +1,16 @@
 package com.austin.sciencelab.ui.screens.virtuallabs1
 
 import androidx.compose.foundation.Image
-import androidx.compose.material3.TopAppBar
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,151 +18,193 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.austin.sciencelab.R
-import com.austin.sciencelab.navigation.ROUT_ABOUT
-import com.austin.sciencelab.navigation.ROUT_INORGANIC
-import com.austin.sciencelab.navigation.ROUT_QUANTITATIVE
-import com.austin.sciencelab.navigation.ROUT_VIRTUALLABS2
+import com.austin.sciencelab.navigation.*
 import com.austin.sciencelab.ui.theme.lightGreen
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun VirtualLabs1Screen(navController: NavController){
+fun VirtualLabs1Screen(navController: NavController) {
 
-    Column (
-        modifier = Modifier.fillMaxSize().background(color = Color.White),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-    ) {
-        Image(painter = painterResource(R.drawable.img),
-              contentDescription = "equipment",
-              modifier = Modifier.height(240.dp).width(340.dp),
+    val verticalScroll = rememberScrollState()
+    val horizontalScroll = rememberScrollState()
 
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Virtual Labs", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = lightGreen,
+                    titleContentColor = Color.White,
+                    navigationIconContentColor = Color.White
+                    ),
+                navigationIcon = {
+                    IconButton(onClick = {}) {
+                        Icon(
+                            imageVector = Icons.Default.Menu,
+                            contentDescription = ""
+                        )
+                    }
+                }
             )
-
-
-        Card (
-            modifier = Modifier.height(70.dp).width(370.dp),
-            colors = CardDefaults.cardColors(lightGreen)
-        ){
-            Text(
-                text = "Quantitative analysis",
-                color = Color.White,
-                modifier = Modifier.padding(start = 130.dp, top = 20.dp),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-
+        },
+        bottomBar = {
+            BottomAppBar(
+                containerColor = lightGreen,
+                content = {
+                    Spacer(modifier = Modifier.weight(1f))
+                    Text(
+                        text = "© ScienceLab 2025",
+                        fontSize = 15.sp,
+                        color = MaterialTheme.colorScheme.onPrimary,
+                        modifier = Modifier.padding(16.dp)
+                    )
+                    Spacer(modifier = Modifier.weight(1f))
+                }
             )
-        }
+        },
+        content = { paddingValues ->
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .verticalScroll(verticalScroll)
+                    .background(MaterialTheme.colorScheme.background)
+            ) {
 
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Card (
-            modifier = Modifier.height(70.dp).width(370.dp),
-            colors = CardDefaults.cardColors(lightGreen)
-        ){
-            Text(
-                text = "Qualitative analysis",
-                color = Color.White,
-                modifier = Modifier.padding(start = 130.dp, top = 20.dp),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold
-            )
-
-
-
-        }
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Card (
-            modifier = Modifier.height(70.dp).width(370.dp),
-            colors = CardDefaults.cardColors(lightGreen)
-        ){
-            Text(
-                text = "Organic analysis",
-                color = Color.White,
-                modifier = Modifier.padding(start = 130.dp, top = 20.dp),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
+                // Hero Image / Banner
+                Image(
+                    painter = painterResource(R.drawable.land),
+                    contentDescription = "Science Lab Banner",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(200.dp)
+                        .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
                 )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Intro Text Section
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    horizontalAlignment = Alignment.Start
+                ) {
+                    Text(
+                        text = "Explore Virtual Labs",
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "Engage with interactive experiments in chemistry and physics. Tap on a lab below to begin.",
+                        fontSize = 16.sp
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                // Horizontal scrollable lab cards
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .horizontalScroll(horizontalScroll)
+                        .padding(start = 16.dp, end = 16.dp)
+                ) {
+                    val labs = listOf(
+                        LabData("Quantitative analysis", R.drawable.land, ROUT_QUANTITATIVE),
+                        LabData("Qualitative analysis", R.drawable.land, ROUT_QUALITATIVE),
+                        LabData("Organic analysis", R.drawable.land, ROUT_ORGANIC),
+                        LabData("Inorganic analysis", R.drawable.land, ROUT_INORGANIC),
+                        LabData("Energy changes", R.drawable.land, ROUT_ENERGY),
+                        LabData("Reaction rates", R.drawable.land, ROUT_REACTION),
+                        LabData("VirtualLabs2", R.drawable.land, ROUT_VIRTUALLABS2),
+                    )
+
+                    labs.forEach { lab ->
+                        LabCardHorizontal(lab) {
+                            navController.navigate(lab.route)
+                        }
+                        Spacer(modifier = Modifier.width(16.dp))
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                // Extra Content Section
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp)
+                ) {
+                    Text(
+                        text = "Tips for Using Virtual Labs",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "• Ensure stable internet connection.\n" +
+                                "• Read the instructions before starting an experiment.\n" +
+                                "• Take notes of your observations.\n" +
+                                "• Experiment safely and responsibly.",
+                        fontSize = 16.sp
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(24.dp))
+            }
         }
+    )
+}
 
-        Spacer(modifier = Modifier.height(20.dp))
+data class LabData(val title: String, val imageRes: Int, val route: String)
 
-        Card (
-            modifier = Modifier.height(70.dp).width(370.dp),
-            colors = CardDefaults.cardColors(lightGreen)
-        ){
+@Composable
+fun LabCardHorizontal(lab: LabData, onClick: () -> Unit) {
+    Card(
+        modifier = Modifier
+            .width(200.dp)
+            .height(180.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .clickable { onClick() },
+        colors = CardDefaults.cardColors(containerColor = lightGreen),
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+    ) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            Image(
+                painter = painterResource(lab.imageRes),
+                contentDescription = lab.title,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(color = androidx.compose.ui.graphics.Color(0x80000000))
+            )
             Text(
-                text = "Inorganic analysis",
-                color = Color.White,
-                modifier = Modifier.padding(start = 130.dp, top = 20.dp),
-                fontSize = 20.sp,
+                text = lab.title,
+                color = androidx.compose.ui.graphics.Color.White,
+                fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-
-
+                modifier = Modifier.align(Alignment.Center),
+                maxLines = 2
             )
         }
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-
-        Card (
-            modifier = Modifier.height(70.dp).width(370.dp),
-            colors = CardDefaults.cardColors(lightGreen)
-        ){
-            Text(
-                text = "Energy changes",
-                color = Color.White,
-                modifier = Modifier.padding(start = 130.dp, top = 20.dp),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-
-
-            )
-        }
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Card (
-            modifier = Modifier.height(70.dp).width(370.dp),
-            colors = CardDefaults.cardColors(lightGreen)
-        ){
-            Text(
-                text = "Reaction rates",
-                color = Color.White,
-                modifier = Modifier.padding(start = 130.dp, top = 20.dp),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-            )
-        }
-        Button(onClick = {navController.navigate(ROUT_QUANTITATIVE)}
-        ) {
-            Text(text = "Quantitative")
-        }
-
-
-
-
-
     }
 }
 
-
-
-
-
-
-@Preview
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun VirtualLabs1ScreenPreview(){
+fun VirtualLabs1ScreenPreview() {
     VirtualLabs1Screen(rememberNavController())
 }

@@ -41,7 +41,7 @@ import com.austin.sciencelab.ui.theme.lightGreen
 @Composable
 fun AboutScreen(navController: NavController){
     Column (
-        modifier = Modifier.background(color = Color.White).height(1000.dp),
+        modifier = Modifier.background(color = Color.White).height(1000.dp).paint(painter = painterResource(R.drawable.scope)),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
@@ -65,8 +65,7 @@ fun AboutScreen(navController: NavController){
         Text(
             text = "Sciencelab is a mobile application with questions both on theory and labwork that students get to do digitally during holidays across areas in Biology, Chemistry and Physics. ",
             textAlign = TextAlign.Center,
-            fontSize = 20.sp,
-            color = lightGreen,
+            fontSize = 15.sp
 
             )
         Spacer(modifier = Modifier.height(60.dp))
