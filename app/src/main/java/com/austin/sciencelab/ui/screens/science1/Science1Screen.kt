@@ -20,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -39,7 +40,7 @@ import com.austin.sciencelab.ui.theme.lightGreen
 @Composable
 fun Science1Screen(navController: NavController){
     Column (
-        modifier = Modifier.fillMaxSize().background(color = Color.White),
+        modifier = Modifier.fillMaxSize().background(color = Color.White).paint(painter = painterResource(R.drawable.scope), contentScale = ContentScale.FillBounds),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {

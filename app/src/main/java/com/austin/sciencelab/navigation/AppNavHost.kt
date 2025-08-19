@@ -14,11 +14,9 @@ import com.austin.sciencelab.ui.screens.auth.RegisterScreen
 import com.austin.sciencelab.viewmodel.AuthViewModel
 import com.austin.sciencelab.data.UserDatabase
 import com.austin.sciencelab.ui.screens.about.AboutScreen
-import com.austin.sciencelab.ui.screens.biology.BiologyPracticalsScreen
+import com.austin.sciencelab.ui.screens.biology.BiologyLabsScreen
 import com.austin.sciencelab.ui.screens.biology.PlantAnatomyScreen
 import com.austin.sciencelab.ui.screens.biology.SlidePreparationScreen
-import com.austin.sciencelab.ui.screens.books.BooksScreen
-import com.austin.sciencelab.ui.screens.books2.Books2Screen
 import com.austin.sciencelab.ui.screens.energychanges.EnergyChangesScreen
 import com.austin.sciencelab.ui.screens.home.HomeScreen
 import com.austin.sciencelab.ui.screens.inorganic.InorganicScreen
@@ -31,6 +29,8 @@ import com.austin.sciencelab.ui.screens.physics.ThermodynamicsPracticalScreen
 import com.austin.sciencelab.ui.screens.physics.WavesPracticalScreen
 import com.austin.sciencelab.ui.screens.qualitative.QualitativeScreen
 import com.austin.sciencelab.ui.screens.quantitative.QuantitativeScreen
+import com.austin.sciencelab.ui.screens.questions.UploadQuestions
+import com.austin.sciencelab.ui.screens.questions.ViewQuestions
 import com.austin.sciencelab.ui.screens.reactionrates.ReactionScreen
 import com.austin.sciencelab.ui.screens.splash.SplashScreen
 import com.austin.sciencelab.ui.screens.science1.Science1Screen
@@ -82,15 +82,15 @@ fun AppNavHost(
         }
 
         composable(ROUT_VIRTUALLABS3) {
-            BiologyPracticalsScreen(navController)
+            BiologyLabsScreen(navController)
         }
 
         composable(ROUT_CELLBIOLOGY) {
-            BiologyPracticalsScreen(navController)
+            BiologyLabsScreen(navController)
         }
 
         composable(ROUT_CELLPHYSIOLOGY) {
-            BiologyPracticalsScreen(navController)
+            BiologyLabsScreen(navController)
         }
 
         composable(ROUT_PLANTANATOMY) {
@@ -101,20 +101,17 @@ fun AppNavHost(
             SlidePreparationScreen(navController)
         }
 
-        composable(ROUT_MICROBIOLOGY) {
-            MicrobiologyPracticalsScreen(navController)
+        composable(ROUT_UPLOADQUESTIONS) {
+            UploadQuestions(navController)
+        }
+
+
+        composable(ROUT_VIEWQUESTIONS) {
+            ViewQuestions(navController)
         }
 
         composable(ROUT_QUALITATIVE) {
            QualitativeScreen(navController)
-        }
-
-        composable(ROUT_BOOKS) {
-            BooksScreen(navController)
-        }
-
-        composable(ROUT_BOOKS2) {
-            Books2Screen(navController)
         }
 
         composable(ROUT_QUANTITATIVE) {

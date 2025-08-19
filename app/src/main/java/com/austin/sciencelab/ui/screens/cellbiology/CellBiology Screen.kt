@@ -24,33 +24,65 @@ import androidx.navigation.compose.rememberNavController
 import com.austin.sciencelab.R
 import com.austin.sciencelab.ui.theme.lightGreen
 
-// Data class for Cell Biology Practicals
-data class CellBiologyPractical(
-    val title: String,
-    val description: String
+// Data model for Q&A
+data class CellBioQuestion(
+    val question: String,
+    val answer: String
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CellBiologyPracticalsScreen(navController: NavController) {
+fun CellBiologyLabScreen(navController: NavController) {
     val scrollState = rememberScrollState()
 
-    // List of Cell Biology practicals
-    val practicals = listOf(
-        CellBiologyPractical("Observation of Plant Cells", "Use onion epidermis cells to observe cell walls and nuclei under a microscope."),
-        CellBiologyPractical("Observation of Animal Cells", "Prepare cheek cell smears to study cell membranes and nuclei."),
-        CellBiologyPractical("Staining Techniques", "Apply stains such as iodine or methylene blue to enhance visibility of organelles."),
-        CellBiologyPractical("Osmosis in Plant Cells", "Investigate plasmolysis in onion cells placed in salt solution."),
-        CellBiologyPractical("Mitosis Observation", "Study stages of mitosis using root tip squash technique."),
-        CellBiologyPractical("Chloroplast Distribution", "Observe chloroplast arrangement in Elodea leaves under the microscope."),
-        CellBiologyPractical("Cell Size Estimation", "Estimate cell size using an eyepiece graticule and stage micrometer."),
-        CellBiologyPractical("Diffusion in Cells", "Demonstrate diffusion using dialysis tubing as a model cell membrane.")
+    // List of questions & answers
+    val questions = listOf(
+        CellBioQuestion(
+            "1. What is the basic structural and functional unit of life?",
+            "The cell is the basic structural and functional unit of life."
+        ),
+        CellBioQuestion(
+            "2. Name two differences between prokaryotic and eukaryotic cells.",
+            "Prokaryotes lack a nucleus and membrane-bound organelles, while eukaryotes have both."
+        ),
+        CellBioQuestion(
+            "3. What is the function of mitochondria in a cell?",
+            "They produce energy (ATP) through cellular respiration and are often called the powerhouse of the cell."
+        ),
+        CellBioQuestion(
+            "4. Which organelle is responsible for protein synthesis?",
+            "Ribosomes are responsible for protein synthesis."
+        ),
+        CellBioQuestion(
+            "5. What is the role of the plasma membrane in cells?",
+            "It regulates the entry and exit of substances, providing protection and communication."
+        ),
+        CellBioQuestion(
+            "6. Differentiate between rough ER and smooth ER.",
+            "Rough ER has ribosomes for protein synthesis, while smooth ER synthesizes lipids and detoxifies drugs."
+        ),
+        CellBioQuestion(
+            "7. What are lysosomes and what is their role in the cell?",
+            "They are organelles containing digestive enzymes that break down waste and old cell parts."
+        ),
+        CellBioQuestion(
+            "8. Which organelle contains chlorophyll and carries out photosynthesis?",
+            "Chloroplasts contain chlorophyll and carry out photosynthesis in plant cells."
+        ),
+        CellBioQuestion(
+            "9. What is the function of the Golgi apparatus?",
+            "It modifies, sorts, and packages proteins and lipids for transport."
+        ),
+        CellBioQuestion(
+            "10. Why is the nucleus considered the control center of the cell?",
+            "It contains DNA, which regulates all cell activities and reproduction."
+        )
     )
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Cell Biology Practicals", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
+                title = { Text("Cell Biology Practical", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = lightGreen)
             )
         },
@@ -61,9 +93,9 @@ fun CellBiologyPracticalsScreen(navController: NavController) {
                     Spacer(modifier = Modifier.weight(1f))
                     Text(
                         text = "© ScienceLab 2025",
-                        fontSize = 15.sp,
+                        fontSize = 14.sp,
                         color = Color.White,
-                        modifier = Modifier.padding(16.dp)
+                        modifier = Modifier.padding(12.dp)
                     )
                     Spacer(modifier = Modifier.weight(1f))
                 }
@@ -77,75 +109,70 @@ fun CellBiologyPracticalsScreen(navController: NavController) {
                     .verticalScroll(scrollState)
                     .background(MaterialTheme.colorScheme.background)
             ) {
-                // Banner Image
+                // Banner image
                 Image(
-                    painter = painterResource(R.drawable.land),
+                    painter = painterResource(R.drawable.bar), // Replace with your banner
                     contentDescription = "Cell Biology Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(200.dp)
+                        .height(180.dp)
                         .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
-                // Intro Text
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
-                    horizontalAlignment = Alignment.Start
-                ) {
+                // Intro section
+                Column(modifier = Modifier.padding(horizontal = 16.dp)) {
                     Text(
-                        text = "Explore Cell Biology Practicals",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold
+                        text = "Cell Biology Questions",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 22.sp
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = "Select a practical to learn procedures and observations in cell biology.",
+                        text = "Explore the key concepts of cells, their organelles, and their functions through practical Q&A.",
                         fontSize = 16.sp
                     )
                 }
 
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
-                // Practicals List
-                practicals.forEachIndexed { index, practical ->
-                    CellBiologyPracticalCard(number = index + 1, practical = practical)
-                    Spacer(modifier = Modifier.height(16.dp))
+                // Expandable cards
+                questions.forEach { item ->
+                    CellBiologyCard(item)
+                    Spacer(modifier = Modifier.height(12.dp))
                 }
 
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(40.dp))
             }
         }
     )
 }
 
 @Composable
-fun CellBiologyPracticalCard(number: Int, practical: CellBiologyPractical) {
+fun CellBiologyCard(question: CellBioQuestion) {
     var expanded by remember { mutableStateOf(false) }
 
     Card(
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
-            .clickable { expanded = !expanded }
+            .clickable { expanded = !expanded },
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "$number. ${practical.title}",
-                fontWeight = FontWeight.SemiBold,
+                text = question.question,
+                fontWeight = FontWeight.Medium,
                 fontSize = 16.sp
             )
 
             if (expanded) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = practical.description,
+                    text = question.answer,
                     fontSize = 14.sp,
                     color = Color.DarkGray
                 )
@@ -156,6 +183,6 @@ fun CellBiologyPracticalCard(number: Int, practical: CellBiologyPractical) {
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun CellBiologyPracticalsScreenPreview() {
-    CellBiologyPracticalsScreen(rememberNavController())
+fun CellBiologyPreview() {
+    CellBiologyLabScreen(rememberNavController())
 }

@@ -13,8 +13,6 @@ const val ROUT_QUANTITATIVE="quantitative"
 const val ROUT_ORGANIC="organic"
 const val ROUT_INORGANIC="inorganic"
 const val ROUT_REACTION="reaction"
-const val ROUT_BOOKS="books"
-const val ROUT_BOOKS2="books2"
 const val ROUT_ENERGY="energy"
 const val ROUT_MECHANICS="mechanics"
 const val ROUT_THERMODYNAMICS="thermodynamics"
@@ -26,6 +24,8 @@ const val ROUT_CELLPHYSIOLOGY="cellphysiology"
 const val ROUT_PLANTANATOMY="plantanatomy"
 const val ROUT_SLIDES="slides"
 const val ROUT_MICROBIOLOGY="microbiology"
+const val ROUT_UPLOADQUESTIONS="uploadquestions"
+const val ROUT_VIEWQUESTIONS="viewquestions"
 
 //Auth
 

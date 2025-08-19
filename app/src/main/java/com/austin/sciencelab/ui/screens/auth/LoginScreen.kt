@@ -30,6 +30,7 @@ import androidx.navigation.NavController
 import com.austin.sciencelab.R
 import com.austin.sciencelab.navigation.ROUT_ABOUT
 import com.austin.sciencelab.navigation.ROUT_REGISTER
+import com.austin.sciencelab.navigation.ROUT_UPLOADQUESTIONS
 import com.austin.sciencelab.ui.theme.lightGreen
 import com.austin.sciencelab.viewmodel.AuthViewModel
 
@@ -50,8 +51,8 @@ fun LoginScreen(
             if (user == null) {
                 Toast.makeText(context, "Invalid Credentials", Toast.LENGTH_SHORT).show()
             } else {
-                if (user.role == "Seller") {
-                    navController.navigate(ROUT_ABOUT)
+                if (user.role == "Teacher") {
+                    navController.navigate(ROUT_UPLOADQUESTIONS)
 
                 } else
                     navController.navigate(ROUT_ABOUT) {

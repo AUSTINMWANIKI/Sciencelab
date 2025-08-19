@@ -35,13 +35,14 @@ import com.austin.sciencelab.R
 import com.austin.sciencelab.navigation.ROUT_ABOUT
 import com.austin.sciencelab.navigation.ROUT_SCIENCE1
 import com.austin.sciencelab.navigation.ROUT_SCIENCE2
+import com.austin.sciencelab.navigation.ROUT_VIEWQUESTIONS
 import com.austin.sciencelab.ui.theme.lightGreen
 
 
 @Composable
 fun AboutScreen(navController: NavController){
     Column (
-        modifier = Modifier.background(color = Color.White).height(1000.dp).paint(painter = painterResource(R.drawable.scope)),
+        modifier = Modifier.background(color = Color.White).height(1000.dp).paint(painter = painterResource(R.drawable.scope), contentScale = ContentScale.FillBounds),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
@@ -68,11 +69,28 @@ fun AboutScreen(navController: NavController){
             fontSize = 15.sp
 
             )
-        Spacer(modifier = Modifier.height(60.dp))
+        Spacer(modifier = Modifier.height(30.dp))
 
         Button(
             onClick = {
                 navController.navigate(ROUT_SCIENCE1)
+            },
+            colors = ButtonDefaults.buttonColors(lightGreen),
+            shape = RoundedCornerShape(10.dp),
+            modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp),
+        )
+
+        {
+            Text(text = "Next slide")
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+
+
+        Button(
+            onClick = {
+                navController.navigate(ROUT_VIEWQUESTIONS)
             },
             colors = ButtonDefaults.buttonColors(lightGreen),
             shape = RoundedCornerShape(10.dp),

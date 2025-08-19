@@ -6,8 +6,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
@@ -25,18 +25,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.austin.sciencelab.R
-import com.austin.sciencelab.navigation.ROUT_CELLBIOLOGY
-import com.austin.sciencelab.navigation.ROUT_CELLPHYSIOLOGY
-import com.austin.sciencelab.navigation.ROUT_PLANTANATOMY
-import com.austin.sciencelab.navigation.ROUT_SLIDES
+import com.austin.sciencelab.navigation.*
 import com.austin.sciencelab.ui.theme.lightGreen
-
-// Data class for practicals
-data class BioLabData(val title: String, val imageRes: Int, val route: String)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BiologyPracticalsScreen(navController: NavController) {
+fun BiologyLabsScreen(navController: NavController) {
 
     val verticalScroll = rememberScrollState()
     val horizontalScroll = rememberScrollState()
@@ -44,14 +38,14 @@ fun BiologyPracticalsScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Biology Practicals", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
+                title = { Text("Virtual Labs - Biology", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = lightGreen,
                     titleContentColor = Color.White,
                     navigationIconContentColor = Color.White
                 ),
                 navigationIcon = {
-                    IconButton(onClick = { /* open drawer or menu */ }) {
+                    IconButton(onClick = {}) {
                         Icon(
                             imageVector = Icons.Default.Menu,
                             contentDescription = "Menu"
@@ -68,7 +62,7 @@ fun BiologyPracticalsScreen(navController: NavController) {
                     Text(
                         text = "© ScienceLab 2025",
                         fontSize = 15.sp,
-                        color = MaterialTheme.colorScheme.onPrimary,
+                        color = Color.White,
                         modifier = Modifier.padding(16.dp)
                     )
                     Spacer(modifier = Modifier.weight(1f))
@@ -84,10 +78,10 @@ fun BiologyPracticalsScreen(navController: NavController) {
                     .background(MaterialTheme.colorScheme.background)
             ) {
 
-                // Banner
+                // Banner Image
                 Image(
                     painter = painterResource(R.drawable.land),
-                    contentDescription = "Biology Banner",
+                    contentDescription = "Biology Labs Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -97,43 +91,43 @@ fun BiologyPracticalsScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Intro text
+                // Intro Text
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
+                        .padding(horizontal = 16.dp),
+                    horizontalAlignment = Alignment.Start
                 ) {
                     Text(
-                        text = "Explore Biology Practicals",
+                        text = "Explore Biology Virtual Labs",
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = "Engage with interactive biology experiments. Tap on a practical below to begin.",
+                        text = "Engage with interactive biology experiments. Tap on a lab below to begin.",
                         fontSize = 16.sp
                     )
                 }
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // Horizontal scrollable practical cards
+                // Horizontal scrollable lab cards
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .horizontalScroll(horizontalScroll)
                         .padding(start = 16.dp, end = 16.dp)
                 ) {
-                    val practicals = listOf(
-                        BioLabData("Cell Biology", R.drawable.land, ROUT_CELLBIOLOGY),
-                        BioLabData("Preparation of Temporary Slides", R.drawable.land, ROUT_SLIDES),
-                        BioLabData("Cell Physiology", R.drawable.land, ROUT_CELLPHYSIOLOGY),
-                        BioLabData("Plant Anatomy", R.drawable.land, ROUT_PLANTANATOMY),
-
+                    val labs = listOf(
+                        LabData("Cell Biology", R.drawable.land, ROUT_CELLBIOLOGY),
+                        LabData("Preparation of Temporary Slides", R.drawable.land, ROUT_SLIDES),
+                        LabData("Cell Physiology", R.drawable.land, ROUT_CELLPHYSIOLOGY),
+                        LabData("Plant Anatomy", R.drawable.land, ROUT_PLANTANATOMY),
                     )
 
-                    practicals.forEach { lab ->
-                        BioLabCardHorizontal(lab) {
+                    labs.forEach { lab ->
+                        LabCardHorizontal(lab) {
                             navController.navigate(lab.route)
                         }
                         Spacer(modifier = Modifier.width(16.dp))
@@ -142,7 +136,7 @@ fun BiologyPracticalsScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // Tips section
+                // Tips / extra content
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -169,9 +163,10 @@ fun BiologyPracticalsScreen(navController: NavController) {
     )
 }
 
-// Card for horizontal layout
+data class LabData(val title: String, val imageRes: Int, val route: String)
+
 @Composable
-fun BioLabCardHorizontal(lab: BioLabData, onClick: () -> Unit) {
+fun LabCardHorizontal(lab: LabData, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .width(200.dp)
@@ -191,7 +186,7 @@ fun BioLabCardHorizontal(lab: BioLabData, onClick: () -> Unit) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color(0x80000000))
+                    .background(color = Color(0x80000000))
             )
             Text(
                 text = lab.title,
@@ -207,6 +202,6 @@ fun BioLabCardHorizontal(lab: BioLabData, onClick: () -> Unit) {
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun BiologyPracticalsScreenPreview() {
-    BiologyPracticalsScreen(rememberNavController())
+fun BiologyLabsScreenPreview() {
+    BiologyLabsScreen(rememberNavController())
 }
