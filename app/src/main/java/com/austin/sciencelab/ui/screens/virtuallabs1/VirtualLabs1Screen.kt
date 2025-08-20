@@ -9,6 +9,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -16,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.Key.Companion.I
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -44,14 +47,19 @@ fun VirtualLabs1Screen(navController: NavController) {
                     titleContentColor = Color.White,
                     navigationIconContentColor = Color.White
                     ),
+
+
                 navigationIcon = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = {navController.navigate(ROUT_SCIENCE2)}) {
                         Icon(
-                            imageVector = Icons.Default.Menu,
-                            contentDescription = ""
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "menu"
                         )
                     }
-                }
+                },
+
+
+
             )
         },
         bottomBar = {
@@ -80,7 +88,7 @@ fun VirtualLabs1Screen(navController: NavController) {
 
                 // Hero Image / Banner
                 Image(
-                    painter = painterResource(R.drawable.land),
+                    painter = painterResource(R.drawable.apparatus),
                     contentDescription = "Science Lab Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -181,16 +189,18 @@ fun LabCardHorizontal(lab: LabData, onClick: () -> Unit) {
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             Image(
-                painter = painterResource(lab.imageRes),
+                painter = painterResource(R.drawable.apparatus),
                 contentDescription = lab.title,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
+
             Box(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(color = androidx.compose.ui.graphics.Color(0x80000000))
             )
+
             Text(
                 text = lab.title,
                 color = androidx.compose.ui.graphics.Color.White,

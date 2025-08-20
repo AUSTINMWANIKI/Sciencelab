@@ -9,6 +9,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -45,9 +46,9 @@ fun VirtualLabs2Screen(navController: NavController) {
                     navigationIconContentColor = Color.White
                 ),
                 navigationIcon = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = { navController.navigate(ROUT_VIRTUALLABS1)}) {
                         Icon(
-                            imageVector = Icons.Default.Menu,
+                            imageVector = Icons.Default.ArrowBack,
                             contentDescription = "Menu"
                         )
                     }
@@ -80,7 +81,7 @@ fun VirtualLabs2Screen(navController: NavController) {
 
                 // Banner Image
                 Image(
-                    painter = painterResource(R.drawable.land),
+                    painter = painterResource(R.drawable.bearing),
                     contentDescription = "Physics Labs Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -120,11 +121,11 @@ fun VirtualLabs2Screen(navController: NavController) {
                         .padding(start = 16.dp, end = 16.dp)
                 ) {
                     val labs = listOf(
-                        LabData("Mechanics", R.drawable.land, ROUT_MECHANICS),
-                        LabData("Thermodynamics", R.drawable.land, ROUT_THERMODYNAMICS),
-                        LabData("Waves", R.drawable.land, ROUT_WAVES),
-                        LabData("Optics", R.drawable.land, ROUT_OPTICS),
-                        LabData("Electricity & Magnetism", R.drawable.land, ROUT_ELECTRICITYANDMAGNETISM),
+                        LabData("Mechanics", R.drawable.stress, ROUT_MECHANICS),
+                        LabData("Thermodynamics", R.drawable.heat, ROUT_THERMODYNAMICS),
+                        LabData("Waves", R.drawable.periodic, ROUT_WAVES),
+                        LabData("Optics", R.drawable.light, ROUT_OPTICS),
+                        LabData("Electricity & Magnetism", R.drawable.circuit, ROUT_ELECTRICITYANDMAGNETISM),
                         LabData("VirtualLabs3", R.drawable.land, ROUT_CELLBIOLOGY),
                     )
 
@@ -180,7 +181,7 @@ fun LabCardHorizontal(lab: LabData, onClick: () -> Unit) {
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             Image(
-                painter = painterResource(lab.imageRes),
+                painter = painterResource(R.drawable.bearing),
                 contentDescription = lab.title,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()

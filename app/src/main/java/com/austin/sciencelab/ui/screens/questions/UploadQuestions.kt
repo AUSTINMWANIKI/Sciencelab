@@ -31,7 +31,7 @@ data class Question(
 @Dao
 interface QuestionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertQuestion(question: com.austin.sciencelab.model.Question)
+    suspend fun insertQuestion(question: Question)
 
     @Query("SELECT * FROM questions WHERE subject = :subject")
     fun getQuestionsBySubject(subject: String): LiveData<List<Question>>
