@@ -126,7 +126,8 @@ fun VirtualLabs2Screen(navController: NavController) {
                         LabData("Waves", R.drawable.periodic, ROUT_WAVES),
                         LabData("Optics", R.drawable.light, ROUT_OPTICS),
                         LabData("Electricity & Magnetism", R.drawable.circuit, ROUT_ELECTRICITYANDMAGNETISM),
-                        LabData("VirtualLabs3", R.drawable.land, ROUT_CELLBIOLOGY),
+                        LabData("Practical", R.drawable.bearing, ROUT_PRACTICALS),
+                        LabData("VirtualLabs3", R.drawable.land, ROUT_VIRTUALLABS3),
                     )
 
                     labs.forEach { lab ->

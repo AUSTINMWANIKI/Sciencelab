@@ -15,15 +15,18 @@ import com.austin.sciencelab.viewmodel.AuthViewModel
 import com.austin.sciencelab.data.UserDatabase
 import com.austin.sciencelab.ui.screens.about.AboutScreen
 import com.austin.sciencelab.ui.screens.biology.BiologyLabsScreen
+import com.austin.sciencelab.ui.screens.biology.CellBiologyLabScreen
+import com.austin.sciencelab.ui.screens.biology.CellBiologyPracticalScreen
+import com.austin.sciencelab.ui.screens.biology.CellPhysiologyScreen
 import com.austin.sciencelab.ui.screens.biology.PlantAnatomyScreen
 import com.austin.sciencelab.ui.screens.biology.SlidePreparationScreen
 import com.austin.sciencelab.ui.screens.energychanges.EnergyChangesScreen
 import com.austin.sciencelab.ui.screens.home.HomeScreen
 import com.austin.sciencelab.ui.screens.inorganic.InorganicScreen
-import com.austin.sciencelab.ui.screens.microbiology.MicrobiologyPracticalsScreen
 import com.austin.sciencelab.ui.screens.organic.OrganicScreen
 import com.austin.sciencelab.ui.screens.physics.ElectricityPracticalScreen
 import com.austin.sciencelab.ui.screens.physics.MechanicsPracticalScreen
+import com.austin.sciencelab.ui.screens.physics.MechanicsPracticalsScreen
 import com.austin.sciencelab.ui.screens.physics.OpticsPracticalScreen
 import com.austin.sciencelab.ui.screens.physics.ThermodynamicsPracticalScreen
 import com.austin.sciencelab.ui.screens.physics.WavesPracticalScreen
@@ -85,12 +88,25 @@ fun AppNavHost(
             BiologyLabsScreen(navController)
         }
 
-        composable(ROUT_CELLBIOLOGY) {
-            BiologyLabsScreen(navController)
+        composable(ROUT_CELLBIO) {
+            CellBiologyPracticalScreen(navController)
         }
 
+        composable(ROUT_CELLBIOLOGY) {
+            CellBiologyLabScreen(navController)
+        }
+
+        composable(ROUT_PRACTICAL) {
+            MechanicsPracticalsScreen(navController)
+        }
+
+
+
+
+
+
         composable(ROUT_CELLPHYSIOLOGY) {
-            BiologyLabsScreen(navController)
+            CellPhysiologyScreen(navController)
         }
 
         composable(ROUT_PLANTANATOMY) {
@@ -137,6 +153,12 @@ fun AppNavHost(
         composable(ROUT_MECHANICS) {
            MechanicsPracticalScreen(navController)
         }
+
+        composable(ROUT_PRACTICALS) {
+            MechanicsPracticalsScreen(navController)
+        }
+
+
 
         composable(ROUT_THERMODYNAMICS) {
             ThermodynamicsPracticalScreen(navController)

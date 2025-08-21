@@ -123,7 +123,7 @@ fun OrganicScreen(navController: NavController) {
             ) {
                 // Banner Image
                 Image(
-                    painter = painterResource(R.drawable.land),
+                    painter = painterResource(R.drawable.img_5),
                     contentDescription = "Chemistry Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -152,7 +152,7 @@ fun OrganicScreen(navController: NavController) {
                         ) {
                             Box(modifier = Modifier.fillMaxSize()) {
                                 Image(
-                                    painter = painterResource(topic.imageRes),
+                                    painter = painterResource(R.drawable.img_5),
                                     contentDescription = topic.title,
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier.fillMaxSize()

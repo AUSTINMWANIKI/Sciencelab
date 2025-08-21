@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.austin.sciencelab.R
+import com.austin.sciencelab.navigation.ROUT_CELLBIO
 import com.austin.sciencelab.ui.theme.lightGreen
 
 // Data model for Q&A
@@ -77,7 +78,9 @@ fun CellBiologyLabScreen(navController: NavController) {
             "10. Why is the nucleus considered the control center of the cell?",
             "It contains DNA, which regulates all cell activities and reproduction."
         )
+
     )
+
 
     Scaffold(
         topBar = {
@@ -98,9 +101,20 @@ fun CellBiologyLabScreen(navController: NavController) {
                         modifier = Modifier.padding(12.dp)
                     )
                     Spacer(modifier = Modifier.weight(1f))
+
+                    Button(
+                        onClick ={navController.navigate(ROUT_CELLBIO)},
+                        colors = ButtonDefaults.buttonColors(Color.Black)
+                    )
+                    {
+                        Text(text = "CellBio")
+                    }
                 }
             )
+
         },
+
+
         content = { paddingValues ->
             Column(
                 modifier = Modifier

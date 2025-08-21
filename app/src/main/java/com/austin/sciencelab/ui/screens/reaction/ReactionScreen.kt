@@ -123,7 +123,7 @@ fun ReactionScreen(navController: NavController) {
             ) {
                 // Banner Image
                 Image(
-                    painter = painterResource(R.drawable.land),
+                    painter = painterResource(R.drawable.img_7),
                     contentDescription = "Reaction Rates Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -152,7 +152,7 @@ fun ReactionScreen(navController: NavController) {
                         ) {
                             Box(modifier = Modifier.fillMaxSize()) {
                                 Image(
-                                    painter = painterResource(topic.imageRes),
+                                    painter = painterResource(R.drawable.img_7),
                                     contentDescription = topic.title,
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier.fillMaxSize()

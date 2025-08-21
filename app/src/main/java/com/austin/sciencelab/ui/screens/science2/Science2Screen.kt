@@ -101,7 +101,7 @@ fun Science2Screen(navController: NavController){
         )
 
         {
-            Text(text = "Get started")
+            Text(text = "Virtual Labs1")
         }
     }
 }

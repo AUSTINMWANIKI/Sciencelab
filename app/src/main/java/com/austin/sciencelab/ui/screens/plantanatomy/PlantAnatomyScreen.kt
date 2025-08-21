@@ -62,7 +62,7 @@ fun PlantAnatomyScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Plant Anatomy Practical", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
+                title = { Text("Plant Anatomy Sample Questions", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = lightGreen)
             )
         },
@@ -91,7 +91,7 @@ fun PlantAnatomyScreen(navController: NavController) {
             ) {
                 // Banner
                 Image(
-                    painter = painterResource(R.drawable.land), // Replace with a plant image
+                    painter = painterResource(R.drawable.parts), // Replace with a plant image
                     contentDescription = "Plant Anatomy Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -105,7 +105,7 @@ fun PlantAnatomyScreen(navController: NavController) {
                 // Intro
                 Column(modifier = Modifier.padding(horizontal = 16.dp)) {
                     Text(
-                        text = "Plant Anatomy Experiments",
+                        text = "Plant Anatomy Questions",
                         fontWeight = FontWeight.Bold,
                         fontSize = 22.sp
                     )

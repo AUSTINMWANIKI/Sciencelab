@@ -81,12 +81,12 @@ fun BiologyLabsScreen(navController: NavController) {
 
                 // Banner Image
                 Image(
-                    painter = painterResource(R.drawable.land),
+                    painter = painterResource(R.drawable.specimen),
                     contentDescription = "Biology Labs Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(200.dp)
+                        .height(400.dp)
                         .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
                 )
 
@@ -179,7 +179,7 @@ fun LabCardHorizontal(lab: LabData, onClick: () -> Unit) {
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             Image(
-                painter = painterResource(lab.imageRes),
+                    painter = painterResource(R.drawable.cell),
                 contentDescription = lab.title,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()

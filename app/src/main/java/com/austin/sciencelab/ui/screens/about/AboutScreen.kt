@@ -66,7 +66,8 @@ fun AboutScreen(navController: NavController){
         Text(
             text = "Sciencelab is a mobile application with questions both on theory and labwork that students get to do digitally during holidays across areas in Biology, Chemistry and Physics. ",
             textAlign = TextAlign.Center,
-            fontSize = 15.sp
+            fontSize = 15.sp,
+            modifier = Modifier.padding()
 
             )
         Spacer(modifier = Modifier.height(30.dp))
@@ -81,7 +82,7 @@ fun AboutScreen(navController: NavController){
         )
 
         {
-            Text(text = "Next slide")
+            Text(text = "Science1")
         }
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -98,7 +99,7 @@ fun AboutScreen(navController: NavController){
         )
 
         {
-            Text(text = "Next slide")
+            Text(text = "View Questions")
         }
 
 

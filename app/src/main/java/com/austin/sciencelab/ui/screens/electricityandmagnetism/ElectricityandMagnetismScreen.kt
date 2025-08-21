@@ -92,7 +92,7 @@ fun ElectricityPracticalScreen(navController: NavController) {
 
                 // Banner Image
                 Image(
-                    painter = painterResource(R.drawable.land),
+                    painter = painterResource(R.drawable.img_9),
                     contentDescription = "Electricity Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier

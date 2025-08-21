@@ -124,7 +124,7 @@ fun QuantitativeScreen(navController: NavController) {
 
                 // Banner Image
                 Image(
-                    painter = painterResource(R.drawable.land),
+                    painter = painterResource(R.drawable.img_4),
                     contentDescription = "Chemistry Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -153,7 +153,7 @@ fun QuantitativeScreen(navController: NavController) {
                         ) {
                             Box(modifier = Modifier.fillMaxSize()) {
                                 Image(
-                                    painter = painterResource(topic.imageRes),
+                                    painter = painterResource(R.drawable.img_4),
                                     contentDescription = topic.title,
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier.fillMaxSize()

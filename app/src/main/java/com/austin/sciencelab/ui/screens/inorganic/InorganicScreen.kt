@@ -126,7 +126,7 @@ fun InorganicScreen(navController: NavController) {
             ) {
                 // Banner / Hero Image
                 Image(
-                    painter = painterResource(R.drawable.land),
+                    painter = painterResource(R.drawable.img_6),
                     contentDescription = "Chemistry Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -155,7 +155,7 @@ fun InorganicScreen(navController: NavController) {
                         ) {
                             Box(modifier = Modifier.fillMaxSize()) {
                                 Image(
-                                    painter = painterResource(topic.imageRes),
+                                    painter = painterResource(R.drawable.img_6),
                                     contentDescription = topic.title,
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier.fillMaxSize()

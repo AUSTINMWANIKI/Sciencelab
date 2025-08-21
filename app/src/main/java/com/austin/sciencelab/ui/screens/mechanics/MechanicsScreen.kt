@@ -57,6 +57,8 @@ fun MechanicsPracticalScreen(navController: NavController) {
             options = listOf("Stopwatch", "Meter rule", "Spring balance", "Voltmeter"),
             answerIndex = 0
         )
+
+
     )
 
     Scaffold(
@@ -92,7 +94,7 @@ fun MechanicsPracticalScreen(navController: NavController) {
 
                 // Banner Image
                 Image(
-                    painter = painterResource(R.drawable.land),
+                    painter = painterResource(R.drawable.tools),
                     contentDescription = "Mechanics Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -155,6 +157,7 @@ fun MechanicsQuestionCard(number: Int, question: PhysicsQuestion) {
                 fontSize = 16.sp
             )
 
+
             Spacer(modifier = Modifier.height(12.dp))
 
             question.options.forEachIndexed { optionIndex, optionText ->
@@ -195,6 +198,8 @@ fun MechanicsQuestionCard(number: Int, question: PhysicsQuestion) {
                         color = if (showAnswer && (isSelected || isCorrect)) Color.White else Color.Black
                     )
                 }
+
+
             }
 
             if (showAnswer) {
@@ -207,6 +212,7 @@ fun MechanicsQuestionCard(number: Int, question: PhysicsQuestion) {
             }
         }
     }
+
 }
 
 @Preview(showBackground = true, showSystemUi = true)

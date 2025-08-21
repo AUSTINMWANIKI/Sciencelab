@@ -92,7 +92,7 @@ fun WavesPracticalScreen(navController: NavController) {
 
                 // Banner Image
                 Image(
-                    painter = painterResource(R.drawable.land),
+                    painter = painterResource(R.drawable.img_3),
                     contentDescription = "Waves Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier

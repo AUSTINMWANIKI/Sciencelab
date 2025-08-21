@@ -91,8 +91,8 @@ fun LoginScreen(
                 Text(
                     text = "Welcome Back!",
                     fontSize = 40.sp,
-                    fontFamily = FontFamily.Cursive,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    color = lightGreen,
                 )
             }
 

@@ -101,7 +101,7 @@ fun Science1Screen(navController: NavController){
         )
 
         {
-            Text(text = "Get started")
+            Text(text = "Science2")
         }
     }
 

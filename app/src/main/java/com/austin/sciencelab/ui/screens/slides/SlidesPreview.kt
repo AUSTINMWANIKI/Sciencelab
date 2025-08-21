@@ -106,6 +106,15 @@ fun SlidePreparationScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(26.dp))
 
+                Image(
+                    painter = painterResource(R.drawable.preparation),
+                    contentDescription = "handle",
+                    modifier = Modifier.fillMaxSize()
+                )
+
+
+
+
                 // Intro section
                 Column(modifier = Modifier.padding(horizontal = 16.dp)) {
                     Text(

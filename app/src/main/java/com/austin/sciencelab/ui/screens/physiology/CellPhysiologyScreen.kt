@@ -65,7 +65,12 @@ fun CellPhysiologyScreen(navController: NavController) {
                 title = { Text("Cell Physiology Practical", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = lightGreen)
             )
+
+
         },
+
+
+
         bottomBar = {
             BottomAppBar(
                 containerColor = lightGreen,
@@ -91,7 +96,7 @@ fun CellPhysiologyScreen(navController: NavController) {
             ) {
                 // Banner image
                 Image(
-                    painter = painterResource(R.drawable.land), // replace with a biology-related banner
+                    painter = painterResource(R.drawable.permeate), // replace with a biology-related banner
                     contentDescription = "Cell Physiology Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier

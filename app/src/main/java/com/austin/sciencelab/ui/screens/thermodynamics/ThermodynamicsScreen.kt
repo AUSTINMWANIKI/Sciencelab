@@ -92,7 +92,7 @@ fun ThermodynamicsPracticalScreen(navController: NavController) {
 
                 // Banner Image
                 Image(
-                    painter = painterResource(R.drawable.land),
+                    painter = painterResource(R.drawable.img_2),
                     contentDescription = "Thermodynamics Banner",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier

@@ -66,8 +66,9 @@ fun RegisterScreen(
         AnimatedVisibility(visible = true, enter = fadeIn(), exit = fadeOut()) {
             Text(
                 "Create Your Account",
-                fontSize = 40.sp,
-                fontFamily = FontFamily.Cursive
+                fontSize = 35.sp,
+                fontWeight = FontWeight.Bold,
+                color = lightGreen,
             )
         }
 
@@ -219,7 +220,11 @@ fun RegisterScreen(
         TextButton(
             onClick = { navController.navigate(ROUT_LOGIN) }
         ) {
-            Text("Already have an account? Login", fontSize = 15.sp)
+            Text(
+                "Already have an account? Login",
+                fontSize = 15.sp,
+                color = Color.Black,
+                )
         }
     }
 }
