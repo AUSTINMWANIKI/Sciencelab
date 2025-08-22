@@ -80,7 +80,7 @@ fun EnergyChangesScreen(navController: NavController) {
             TopAppBar(
                 title = { Text("Energy Changes Practical", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
                 navigationIcon = {
-                    IconButton(onClick = { /* Handle back */ }) {
+                    IconButton(onClick = { navController.navigate(ROUT_ORGANIC) }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                 },

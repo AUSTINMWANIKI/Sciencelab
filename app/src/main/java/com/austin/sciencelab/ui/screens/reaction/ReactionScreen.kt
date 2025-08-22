@@ -91,7 +91,7 @@ fun ReactionScreen(navController: NavController) {
             TopAppBar(
                 title = { Text("Reaction Rates Practical", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
                 navigationIcon = {
-                    IconButton(onClick = { /* Handle back navigation */ }) {
+                    IconButton(onClick = { navController.navigate(ROUT_ENERGYCHANGES) }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                 },

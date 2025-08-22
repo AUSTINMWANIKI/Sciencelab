@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,6 +24,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.austin.sciencelab.R
+import com.austin.sciencelab.navigation.ROUT_CELLBIOLOGY
+import com.austin.sciencelab.navigation.ROUT_TEMPORARY
+import com.austin.sciencelab.navigation.ROUT_VIRTUALLABS1
 import com.austin.sciencelab.ui.theme.lightGreen
 
 // Data model for Slide Preparation Q&A
@@ -67,7 +72,13 @@ fun SlidePreparationScreen(navController: NavController) {
         topBar = {
             TopAppBar(
                 title = { Text("Slide Preparation Practical", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = lightGreen)
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = lightGreen),
+                navigationIcon = {
+                    IconButton(onClick = { navController.navigate(ROUT_CELLBIOLOGY) }) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                    }
+                },
+
             )
         },
         bottomBar = {
@@ -81,6 +92,16 @@ fun SlidePreparationScreen(navController: NavController) {
                         color = Color.White,
                         modifier = Modifier.padding(12.dp)
                     )
+                    Spacer(modifier = Modifier.width(30.dp))
+                    Button(
+                        onClick = {navController.navigate(ROUT_TEMPORARY)},
+                        colors = ButtonDefaults.buttonColors(Color.Black)
+
+                    )
+                    { Text(
+                        text="Temporaryslides")
+                    }
+
                     Spacer(modifier = Modifier.weight(1f))
                 }
             )
@@ -103,6 +124,7 @@ fun SlidePreparationScreen(navController: NavController) {
                         .height(0.dp)
                         .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
                 )
+
 
                 Spacer(modifier = Modifier.height(26.dp))
 

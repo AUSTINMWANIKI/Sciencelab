@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,6 +24,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.austin.sciencelab.R
+import com.austin.sciencelab.navigation.ROUT_PRACTICAL
+import com.austin.sciencelab.navigation.ROUT_SCIENCE2
+import com.austin.sciencelab.navigation.ROUT_VIRTUALLABS2
 import com.austin.sciencelab.ui.theme.lightGreen
 
 data class PhysicsQuestion(
@@ -56,16 +61,42 @@ fun MechanicsPracticalScreen(navController: NavController) {
             text = "Which instrument is used to measure the time of a falling object?",
             options = listOf("Stopwatch", "Meter rule", "Spring balance", "Voltmeter"),
             answerIndex = 0
-        )
+        ),
+        
+
+        
 
 
     )
+    Button(
+        onClick = {navController.navigate(ROUT_PRACTICAL)},
+        modifier = Modifier.fillMaxWidth(),
+        colors = ButtonDefaults.buttonColors(lightGreen),
+
+    )
+    {
+        Text(
+            text = "Practical",
+            fontWeight = FontWeight.Bold,
+            color = Color.White,
+        )
+    }
+
+
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text("Mechanics Practical", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = lightGreen)
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = lightGreen),
+                navigationIcon = {
+                    IconButton(onClick = {navController.navigate(ROUT_VIRTUALLABS2)}) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "menu"
+                        )
+                    }
+                },
             )
         },
         bottomBar = {
@@ -180,7 +211,9 @@ fun MechanicsQuestionCard(number: Int, question: PhysicsQuestion) {
                         .background(backgroundColor, RoundedCornerShape(8.dp))
                         .padding(12.dp),
                     verticalAlignment = Alignment.CenterVertically
-                ) {
+                )
+                {
+
                     RadioButton(
                         selected = isSelected,
                         onClick = {
@@ -192,11 +225,14 @@ fun MechanicsQuestionCard(number: Int, question: PhysicsQuestion) {
                             unselectedColor = Color.Gray
                         )
                     )
+
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = optionText,
                         color = if (showAnswer && (isSelected || isCorrect)) Color.White else Color.Black
                     )
+
+
                 }
 
 

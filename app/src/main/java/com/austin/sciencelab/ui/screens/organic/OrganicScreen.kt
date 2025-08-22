@@ -91,7 +91,7 @@ fun OrganicScreen(navController: NavController) {
             TopAppBar(
                 title = { Text("Organic Analysis", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
                 navigationIcon = {
-                    IconButton(onClick = { /* Handle back navigation */ }) {
+                    IconButton(onClick = { navController.navigate(ROUT_INORGANIC) }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                 },

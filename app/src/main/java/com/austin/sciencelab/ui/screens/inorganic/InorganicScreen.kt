@@ -91,7 +91,7 @@ fun InorganicScreen(navController: NavController) {
             TopAppBar(
                 title = { Text("Inorganic Analysis", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
                 navigationIcon = {
-                    IconButton(onClick = { /* Handle back navigation */ }) {
+                    IconButton(onClick = { navController.navigate(ROUT_QUALITATIVE) }) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = "Back"

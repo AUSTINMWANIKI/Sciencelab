@@ -91,7 +91,7 @@ fun QuantitativeScreen(navController: NavController) {
             TopAppBar(
                 title = { Text("Quantitative Analysis", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
                 navigationIcon = {
-                    IconButton(onClick = { /* Handle back navigation */ }) {
+                    IconButton(onClick = { navController.navigate(ROUT_VIRTUALLABS1) }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                 },

@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,6 +24,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.austin.sciencelab.R
+import com.austin.sciencelab.navigation.ROUT_CELLPHYSIOLOGY
+import com.austin.sciencelab.navigation.ROUT_VIRTUALLABS1
 import com.austin.sciencelab.ui.theme.lightGreen
 
 // Data class for Plant Anatomy Q&A
@@ -63,7 +67,12 @@ fun PlantAnatomyScreen(navController: NavController) {
         topBar = {
             TopAppBar(
                 title = { Text("Plant Anatomy Sample Questions", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = lightGreen)
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = lightGreen),
+                navigationIcon = {
+                    IconButton(onClick = { navController.navigate(ROUT_CELLPHYSIOLOGY) }) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                    }
+                },
             )
         },
         bottomBar = {

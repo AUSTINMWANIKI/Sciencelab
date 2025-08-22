@@ -122,6 +122,7 @@ fun BiologyLabsScreen(navController: NavController) {
                 ) {
                     val labs = listOf(
                         LabData("Cell Biology", R.drawable.land, ROUT_CELLBIOLOGY),
+                        LabData("Temporary", R.drawable.land, ROUT_TEMPORARY),
                         LabData("Preparation of Temporary Slides", R.drawable.land, ROUT_SLIDES),
                         LabData("Cell Physiology", R.drawable.land, ROUT_CELLPHYSIOLOGY),
                         LabData("Plant Anatomy", R.drawable.land, ROUT_PLANTANATOMY),

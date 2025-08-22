@@ -20,14 +20,23 @@ import com.austin.sciencelab.ui.screens.biology.CellBiologyPracticalScreen
 import com.austin.sciencelab.ui.screens.biology.CellPhysiologyScreen
 import com.austin.sciencelab.ui.screens.biology.PlantAnatomyScreen
 import com.austin.sciencelab.ui.screens.biology.SlidePreparationScreen
+import com.austin.sciencelab.ui.screens.biology.TemporarySlidesPracticalsScreen
+import com.austin.sciencelab.ui.screens.chemistry.CationAnionPracticalsScreen
+import com.austin.sciencelab.ui.screens.chemistry.EnergyChangesPracticalsScreen
+import com.austin.sciencelab.ui.screens.chemistry.MolesPracticalScreen
+import com.austin.sciencelab.ui.screens.chemistry.OrganicChemistryPracticalsScreen
+import com.austin.sciencelab.ui.screens.chemistry.ReactionRatesPracticalsScreen
+import com.austin.sciencelab.ui.screens.chemistry.SolubilityPracticalsScreen
 import com.austin.sciencelab.ui.screens.energychanges.EnergyChangesScreen
 import com.austin.sciencelab.ui.screens.home.HomeScreen
 import com.austin.sciencelab.ui.screens.inorganic.InorganicScreen
 import com.austin.sciencelab.ui.screens.organic.OrganicScreen
 import com.austin.sciencelab.ui.screens.physics.ElectricityPracticalScreen
+import com.austin.sciencelab.ui.screens.physics.ElectricityPracticalsScreen
 import com.austin.sciencelab.ui.screens.physics.MechanicsPracticalScreen
 import com.austin.sciencelab.ui.screens.physics.MechanicsPracticalsScreen
 import com.austin.sciencelab.ui.screens.physics.OpticsPracticalScreen
+import com.austin.sciencelab.ui.screens.physics.OpticsPracticalsScreen
 import com.austin.sciencelab.ui.screens.physics.ThermodynamicsPracticalScreen
 import com.austin.sciencelab.ui.screens.physics.WavesPracticalScreen
 import com.austin.sciencelab.ui.screens.qualitative.QualitativeScreen
@@ -96,12 +105,13 @@ fun AppNavHost(
             CellBiologyLabScreen(navController)
         }
 
+        composable(ROUT_TEMPORARY) {
+            TemporarySlidesPracticalsScreen(navController)
+        }
+
         composable(ROUT_PRACTICAL) {
             MechanicsPracticalsScreen(navController)
         }
-
-
-
 
 
 
@@ -134,16 +144,42 @@ fun AppNavHost(
             QuantitativeScreen(navController)
         }
 
+        composable(ROUT_MOLES) {
+            MolesPracticalScreen(navController)
+        }
+
         composable(ROUT_ORGANIC) {
             OrganicScreen(navController)
         }
+
+        composable(ROUT_COMPOUNDS) {
+            OrganicChemistryPracticalsScreen(navController)
+        }
+
+
 
         composable(ROUT_INORGANIC) {
             InorganicScreen(navController)
         }
 
+        composable(ROUT_CATION) {
+            CationAnionPracticalsScreen(navController)
+        }
+
+        composable(ROUT_SOLUBILITY) {
+            SolubilityPracticalsScreen(navController)
+        }
+
+        composable(ROUT_ENERGYCHANGES) {
+            EnergyChangesPracticalsScreen(navController)
+        }
+
         composable(ROUT_REACTION) {
             ReactionScreen(navController)
+        }
+
+        composable(ROUT_REACTIONRATES) {
+            ReactionRatesPracticalsScreen(navController)
         }
 
         composable(ROUT_ENERGY) {
@@ -156,6 +192,14 @@ fun AppNavHost(
 
         composable(ROUT_PRACTICALS) {
             MechanicsPracticalsScreen(navController)
+        }
+
+        composable(ROUT_GEOMETRICOPTICS) {
+            OpticsPracticalsScreen(navController)
+        }
+
+        composable(ROUT_ELECTRICITY) {
+            ElectricityPracticalsScreen(navController)
         }
 
 

@@ -91,7 +91,7 @@ fun QualitativeScreen(navController: NavController) {
             TopAppBar(
                 title = { Text("Qualitative Analysis", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
                 navigationIcon = {
-                    IconButton(onClick = { /* Handle back navigation */ }) {
+                    IconButton(onClick = { navController.navigate(ROUT_QUANTITATIVE) }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                 },

@@ -41,7 +41,7 @@ fun VirtualLabs1Screen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Virtual Labs", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
+                title = { Text("Virtual Labs-Chemistry", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = lightGreen,
                     titleContentColor = Color.White,
@@ -129,11 +129,17 @@ fun VirtualLabs1Screen(navController: NavController) {
                 ) {
                     val labs = listOf(
                         LabData("Quantitative analysis", R.drawable.land, ROUT_QUANTITATIVE),
+                        LabData("Moles", R.drawable.land, ROUT_MOLES),
                         LabData("Qualitative analysis", R.drawable.land, ROUT_QUALITATIVE),
                         LabData("Organic analysis", R.drawable.land, ROUT_ORGANIC),
+                        LabData("Compounds", R.drawable.land, ROUT_COMPOUNDS),
                         LabData("Inorganic analysis", R.drawable.land, ROUT_INORGANIC),
+                        LabData("Cation-Anion test", R.drawable.land, ROUT_CATION),
+                        LabData("Solubility", R.drawable.land, ROUT_SOLUBILITY),
+                        LabData("Energychanges", R.drawable.land, ROUT_ENERGYCHANGES),
                         LabData("Energy changes", R.drawable.land, ROUT_ENERGY),
                         LabData("Reaction rates", R.drawable.land, ROUT_REACTION),
+                        LabData("Reactionrates", R.drawable.land, ROUT_REACTIONRATES),
                         LabData("VirtualLabs2", R.drawable.land, ROUT_VIRTUALLABS2),
                     )
 
