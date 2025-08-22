@@ -16,6 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.austin.sciencelab.R
+import com.austin.sciencelab.navigation.ROUT_VIRTUALLABS2
+import com.austin.sciencelab.ui.theme.lightGreen
 
 @Composable
 fun ElectricityPracticalsScreen(navController: NavHostController) {
@@ -123,7 +125,7 @@ fun ElectricityPracticalsScreen(navController: NavHostController) {
                     "3. Measure voltage across each resistor.\n" +
                     "4. Calculate equivalent resistance using 1/R = 1/R1 + 1/R2 + ...\n" +
                     "5. Compare with theoretical value.",
-            diagramRes = R.drawable.parallel // replace with your drawable resource
+            diagramRes = R.drawable.parallels // replace with your drawable resource
         )
 
         Spacer(Modifier.height(24.dp))
@@ -162,9 +164,21 @@ fun ElectricityPracticalsScreen(navController: NavHostController) {
         // Preview Button
         Button(
             onClick = { showPreview = !showPreview },
-            modifier = Modifier.align(Alignment.CenterHorizontally)
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            colors = ButtonDefaults.buttonColors(lightGreen)
         ) {
             Text(if (showPreview) "Hide Preview" else "Show Preview")
+        }
+
+        Button(
+            onClick = {navController.navigate(ROUT_VIRTUALLABS2)},
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            colors = ButtonDefaults.buttonColors(lightGreen),
+
+        ) {
+            Text(
+                text = "Virtuallabs2"
+            )
         }
 
         if (showPreview) {

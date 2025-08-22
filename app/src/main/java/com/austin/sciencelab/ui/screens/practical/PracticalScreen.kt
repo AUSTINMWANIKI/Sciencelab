@@ -16,6 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.austin.sciencelab.R
+import com.austin.sciencelab.navigation.ROUT_VIRTUALLABS2
+import com.austin.sciencelab.ui.theme.lightGreen
 
 @Composable
 fun MechanicsPracticalsScreen(navController: NavHostController) {
@@ -136,9 +138,21 @@ fun MechanicsPracticalsScreen(navController: NavHostController) {
         // Preview Button
         Button(
             onClick = { showPreview = !showPreview },
-            modifier = Modifier.align(Alignment.CenterHorizontally)
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            colors = ButtonDefaults.buttonColors(lightGreen)
         ) {
             Text(if (showPreview) "Hide Preview" else "Show Preview")
+        }
+
+        Button(
+            onClick = {navController.navigate(ROUT_VIRTUALLABS2)},
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            colors = ButtonDefaults.buttonColors(lightGreen)
+
+        ) {
+            Text(
+                text="Virtuallabs2",
+            )
         }
 
         if (showPreview) {
