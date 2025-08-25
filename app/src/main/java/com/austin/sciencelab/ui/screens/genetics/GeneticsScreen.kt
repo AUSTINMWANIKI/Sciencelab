@@ -17,29 +17,27 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.austin.sciencelab.R
-import com.austin.sciencelab.navigation.ROUT_VIEWQUESTIONS
 import com.austin.sciencelab.navigation.ROUT_VIRTUALLABS3
 import com.austin.sciencelab.ui.theme.lightGreen
 
 @Composable
-fun CellBiologyPracticalScreen(navController: NavHostController) {
+fun GeneticsPracticalScreen(navController: NavHostController) {
     val scrollState = rememberScrollState()
 
-    // Store answers for preview
     val answers = remember { mutableStateListOf("", "", "", "", "", "", "", "", "", "") }
     var showPreview by remember { mutableStateOf(false) }
 
     val questions = listOf(
-        "1. Draw and label the structure of a typical animal cell as observed under the microscope.",
-        "2. State three differences between plant and animal cells based on microscopic observations.",
-        "3. Which organelle is responsible for energy production, and why is it often called the 'powerhouse' of the cell?",
-        "4. Using Table 1 above, explain the role of ribosomes in protein synthesis.",
-        "5. Prepare a wet mount slide of an onion epidermal cell. Record your observations.",
-        "6. Identify at least two visible organelles in your slide and describe their functions.",
-        "7. Compare your microscopic observations of cheek cells and onion cells.",
-        "8. Why do plant cells have a rigid cell wall while animal cells do not?",
-        "9. Explain the role of chloroplasts in plant survival.",
-        "10. Complete an observation table of your prepared slides (Onion vs Cheek cells)."
+        "1. Define genetics and state its importance in biology.",
+        "2. Draw and label the structure of a DNA molecule.",
+        "3. Differentiate between genotype and phenotype with examples.",
+        "4. Using a Punnett square, show the cross between a heterozygous tall pea plant (Tt) and a homozygous short pea plant (tt).",
+        "5. What is Mendel’s Law of Segregation? Give an example.",
+        "6. State two differences between mitosis and meiosis.",
+        "7. Explain the role of chromosomes in inheritance.",
+        "8. Why are sex-linked traits more common in males than in females?",
+        "9. Define mutation and give two examples of genetic disorders caused by mutations.",
+        "10. Complete an observation table comparing dominant and recessive traits."
     )
 
     Column(
@@ -51,7 +49,7 @@ fun CellBiologyPracticalScreen(navController: NavHostController) {
     ) {
         // Title
         Text(
-            text = "Cell Biology Practical",
+            text = "Genetics Biology Practical",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -61,20 +59,20 @@ fun CellBiologyPracticalScreen(navController: NavHostController) {
 
         // Intro
         Text(
-            text = "This practical focuses on studying cell structures, organelles, and microscopic observation of plant and animal cells.",
+            text = "This practical explores genetics concepts such as DNA, inheritance patterns, Mendel’s laws, and genetic disorders.",
             fontSize = 16.sp
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Image of Cell Diagram
+        // Image 1: DNA
         Text(
-            text = "Figure 1: Labeled Animal Cell",
+            text = "Figure 1: Structure of DNA",
             fontWeight = FontWeight.SemiBold
         )
         Image(
-            painter = painterResource(id = R.drawable.specimen),
-            contentDescription = "Animal Cell Diagram",
+            painter = painterResource(id = R.drawable.dna_structure),
+            contentDescription = "DNA Diagram",
             modifier = Modifier
                 .fillMaxWidth()
                 .height(200.dp)
@@ -83,28 +81,41 @@ fun CellBiologyPracticalScreen(navController: NavHostController) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Table (Organelles and Functions)
+        // Table 1: Genotype vs Phenotype
         Text(
-            text = "Table 1: Major Organelles and Their Functions",
+            text = "Table 1: Genotype vs Phenotype",
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp
         )
         Spacer(modifier = Modifier.height(8.dp))
 
-        CellBiologyTable(
-            headers = listOf("Organelle", "Function"),
+        GeneticsTable(
+            headers = listOf("Term", "Definition", "Example"),
             rows = listOf(
-                listOf("Nucleus", "Controls cell activities, stores genetic material"),
-                listOf("Mitochondria", "Site of respiration and energy production"),
-                listOf("Chloroplast", "Site of photosynthesis in plant cells"),
-                listOf("Ribosomes", "Protein synthesis"),
-                listOf("Cell Membrane", "Regulates movement of substances in/out")
+                listOf("Genotype", "Genetic makeup of an organism", "TT, Tt, tt"),
+                listOf("Phenotype", "Observable characteristics", "Tall plant, short plant")
             )
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Image 2: Punnett Square
+        Text(
+            text = "Figure 2: Punnett Square Example",
+            fontWeight = FontWeight.SemiBold
+        )
+        Image(
+            painter = painterResource(id = R.drawable.punnett_square),
+            contentDescription = "Punnett Square",
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .padding(8.dp)
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Questions Section
+        // Questions
         Text(
             text = "Practical Questions",
             fontWeight = FontWeight.Bold,
@@ -122,30 +133,25 @@ fun CellBiologyPracticalScreen(navController: NavHostController) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Another table (Comparison)
+        // Table 2: Dominant vs Recessive Traits
         Text(
-            text = "Table 2: Comparison of Onion and Cheek Cells",
+            text = "Table 2: Dominant vs Recessive Traits",
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp
         )
         Spacer(modifier = Modifier.height(8.dp))
 
-        CellBiologyTable(
-            headers = listOf("Feature", "Onion Cell", "Cheek Cell"),
+        GeneticsTable(
+            headers = listOf("Trait Type", "Description", "Example"),
             rows = listOf(
-                listOf("Cell Wall", "Present", "Absent"),
-                listOf("Shape", "Rectangular", "Irregular"),
-                listOf("Nucleus", "Present", "Present"),
-                listOf("Chloroplasts", "Present", "Absent"),
-                listOf("Vacuole", "Large central", "Small/absent")
+                listOf("Dominant", "Expressed when at least one allele is present", "Tall (T)"),
+                listOf("Recessive", "Expressed only when two alleles are present", "Short (t)")
             )
         )
 
-        Spacer(modifier = Modifier.height(7.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
-
-
-        // Preview Button
+        // Buttons
         Button(
             onClick = { showPreview = !showPreview },
             modifier = Modifier.align(Alignment.CenterHorizontally),
@@ -155,11 +161,11 @@ fun CellBiologyPracticalScreen(navController: NavHostController) {
         }
 
         Button(
-            onClick = {navController.navigate(ROUT_VIRTUALLABS3)},
+            onClick = { navController.navigate(ROUT_VIRTUALLABS3) },
             modifier = Modifier.align(Alignment.CenterHorizontally),
             colors = ButtonDefaults.buttonColors(lightGreen),
         ) {
-            Text(text="Virtuallabs3")
+            Text(text = "Virtuallabs3")
         }
 
         if (showPreview) {
@@ -169,39 +175,7 @@ fun CellBiologyPracticalScreen(navController: NavHostController) {
 }
 
 @Composable
-fun QuestionItem(question: String, answer: String, onAnswerChange: (String) -> Unit) {
-    Column(modifier = Modifier.padding(vertical = 8.dp)) {
-        Text(text = question, fontSize = 15.sp, fontWeight = FontWeight.Medium)
-        OutlinedTextField(
-            value = answer,
-            onValueChange = onAnswerChange,
-            placeholder = { Text("Write your answer here...") },
-            modifier = Modifier.fillMaxWidth()
-        )
-    }
-}
-
-@Composable
-fun PreviewAnswers(questions: List<String>, answers: List<String>) {
-    Spacer(modifier = Modifier.height(16.dp))
-    Text(
-        text = "Your Answers Preview",
-        fontSize = 18.sp,
-        fontWeight = FontWeight.Bold
-    )
-    Spacer(modifier = Modifier.height(8.dp))
-
-    questions.forEachIndexed { i, q ->
-        Text(
-            text = "$q\nAnswer: ${if (answers[i].isBlank()) "Not answered" else answers[i]}",
-            fontSize = 14.sp,
-            modifier = Modifier.padding(vertical = 4.dp)
-        )
-    }
-}
-
-@Composable
-fun CellBiologyTable(headers: List<String>, rows: List<List<String>>) {
+fun GeneticsTable(headers: List<String>, rows: List<List<String>>) {
     Column(
         modifier = Modifier
             .fillMaxWidth()

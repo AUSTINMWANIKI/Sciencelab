@@ -125,6 +125,9 @@ fun BiologyLabsScreen(navController: NavController) {
                         LabData("Temporary", R.drawable.land, ROUT_TEMPORARY),
                         LabData("Preparation of Temporary Slides", R.drawable.land, ROUT_SLIDES),
                         LabData("Cell Physiology", R.drawable.land, ROUT_CELLPHYSIOLOGY),
+                        LabData("Cell Physio", R.drawable.land, ROUT_CELLPHYSIO),
+                        LabData("Genetics", R.drawable.land, ROUT_GENETICS),
+                        LabData("Support & Movement", R.drawable.land, ROUT_MOVEMENT),
                         LabData("Plant Anatomy", R.drawable.land, ROUT_PLANTANATOMY),
                         LabData("Cellbiology", R.drawable.land, ROUT_CELLBIO),
                     )

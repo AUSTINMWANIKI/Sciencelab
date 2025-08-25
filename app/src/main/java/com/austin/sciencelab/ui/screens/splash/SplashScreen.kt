@@ -1,5 +1,6 @@
 package com.austin.sciencelab.ui.screens.splash
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
@@ -33,10 +34,11 @@ fun SplashScreen(navController: NavController) {
     }
 
     Column(
-        modifier = Modifier
-            .fillMaxSize() ,
+
+        modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly // space out content across full screen
+
     ) {
         // Top: App Title
         Text(

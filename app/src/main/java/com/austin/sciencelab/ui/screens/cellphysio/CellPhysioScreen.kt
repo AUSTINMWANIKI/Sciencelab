@@ -17,29 +17,27 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.austin.sciencelab.R
-import com.austin.sciencelab.navigation.ROUT_VIEWQUESTIONS
 import com.austin.sciencelab.navigation.ROUT_VIRTUALLABS3
 import com.austin.sciencelab.ui.theme.lightGreen
 
 @Composable
-fun CellBiologyPracticalScreen(navController: NavHostController) {
+fun CellPhysiologyPracticalScreen(navController: NavHostController) {
     val scrollState = rememberScrollState()
 
-    // Store answers for preview
     val answers = remember { mutableStateListOf("", "", "", "", "", "", "", "", "", "") }
     var showPreview by remember { mutableStateOf(false) }
 
     val questions = listOf(
-        "1. Draw and label the structure of a typical animal cell as observed under the microscope.",
-        "2. State three differences between plant and animal cells based on microscopic observations.",
-        "3. Which organelle is responsible for energy production, and why is it often called the 'powerhouse' of the cell?",
-        "4. Using Table 1 above, explain the role of ribosomes in protein synthesis.",
-        "5. Prepare a wet mount slide of an onion epidermal cell. Record your observations.",
-        "6. Identify at least two visible organelles in your slide and describe their functions.",
-        "7. Compare your microscopic observations of cheek cells and onion cells.",
-        "8. Why do plant cells have a rigid cell wall while animal cells do not?",
-        "9. Explain the role of chloroplasts in plant survival.",
-        "10. Complete an observation table of your prepared slides (Onion vs Cheek cells)."
+        "1. Define osmosis and explain its importance in maintaining cell turgor.",
+        "2. Using potato cylinders, describe how you would investigate the effect of sucrose concentration on osmosis.",
+        "3. Differentiate between diffusion and active transport in terms of energy requirement and direction of movement.",
+        "4. What role does the plasma membrane play in regulating transport of substances?",
+        "5. Using Table 1 above, explain how enzymes accelerate biochemical reactions in cells.",
+        "6. State the effect of temperature on enzyme activity and explain what happens at very high temperatures.",
+        "7. Using your observations, compare the rate of diffusion in liquids and gases.",
+        "8. Why is active transport important in absorption of mineral ions in plant roots?",
+        "9. Explain the significance of osmoregulation in animal cells.",
+        "10. Complete an observation table comparing passive and active transport."
     )
 
     Column(
@@ -51,7 +49,7 @@ fun CellBiologyPracticalScreen(navController: NavHostController) {
     ) {
         // Title
         Text(
-            text = "Cell Biology Practical",
+            text = "Cell Physiology Practical",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -61,20 +59,20 @@ fun CellBiologyPracticalScreen(navController: NavHostController) {
 
         // Intro
         Text(
-            text = "This practical focuses on studying cell structures, organelles, and microscopic observation of plant and animal cells.",
+            text = "This practical explores physiological processes of cells such as osmosis, diffusion, enzyme activity, and active transport.",
             fontSize = 16.sp
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Image of Cell Diagram
+        // Image
         Text(
-            text = "Figure 1: Labeled Animal Cell",
+            text = "Figure 1: Osmosis in Plant Cells",
             fontWeight = FontWeight.SemiBold
         )
         Image(
             painter = painterResource(id = R.drawable.specimen),
-            contentDescription = "Animal Cell Diagram",
+            contentDescription = "Osmosis Diagram",
             modifier = Modifier
                 .fillMaxWidth()
                 .height(200.dp)
@@ -83,28 +81,28 @@ fun CellBiologyPracticalScreen(navController: NavHostController) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Table (Organelles and Functions)
+        // Table
         Text(
-            text = "Table 1: Major Organelles and Their Functions",
+            text = "Table 1: Key Physiological Processes",
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp
         )
         Spacer(modifier = Modifier.height(8.dp))
 
-        CellBiologyTable(
-            headers = listOf("Organelle", "Function"),
+        CellPhysiologyTable(
+            headers = listOf("Process", "Description"),
             rows = listOf(
-                listOf("Nucleus", "Controls cell activities, stores genetic material"),
-                listOf("Mitochondria", "Site of respiration and energy production"),
-                listOf("Chloroplast", "Site of photosynthesis in plant cells"),
-                listOf("Ribosomes", "Protein synthesis"),
-                listOf("Cell Membrane", "Regulates movement of substances in/out")
+                listOf("Osmosis", "Movement of water across a semi-permeable membrane"),
+                listOf("Diffusion", "Movement of molecules from high to low concentration"),
+                listOf("Active Transport", "Movement against concentration gradient using energy"),
+                listOf("Enzyme Activity", "Catalysis of biochemical reactions"),
+                listOf("Osmoregulation", "Maintenance of water balance in cells")
             )
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Questions Section
+        // Questions
         Text(
             text = "Practical Questions",
             fontWeight = FontWeight.Bold,
@@ -122,30 +120,27 @@ fun CellBiologyPracticalScreen(navController: NavHostController) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Another table (Comparison)
+        // Another Table
         Text(
-            text = "Table 2: Comparison of Onion and Cheek Cells",
+            text = "Table 2: Passive vs Active Transport",
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp
         )
         Spacer(modifier = Modifier.height(8.dp))
 
-        CellBiologyTable(
-            headers = listOf("Feature", "Onion Cell", "Cheek Cell"),
+        CellPhysiologyTable(
+            headers = listOf("Feature", "Passive Transport", "Active Transport"),
             rows = listOf(
-                listOf("Cell Wall", "Present", "Absent"),
-                listOf("Shape", "Rectangular", "Irregular"),
-                listOf("Nucleus", "Present", "Present"),
-                listOf("Chloroplasts", "Present", "Absent"),
-                listOf("Vacuole", "Large central", "Small/absent")
+                listOf("Energy Requirement", "Not required", "Required (ATP)"),
+                listOf("Direction", "Down concentration gradient", "Against gradient"),
+                listOf("Examples", "Osmosis, diffusion", "Ion uptake in roots"),
+                listOf("Speed", "Slower", "Faster with energy input")
             )
         )
 
-        Spacer(modifier = Modifier.height(7.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
-
-
-        // Preview Button
+        // Buttons
         Button(
             onClick = { showPreview = !showPreview },
             modifier = Modifier.align(Alignment.CenterHorizontally),
@@ -155,11 +150,11 @@ fun CellBiologyPracticalScreen(navController: NavHostController) {
         }
 
         Button(
-            onClick = {navController.navigate(ROUT_VIRTUALLABS3)},
+            onClick = { navController.navigate(ROUT_VIRTUALLABS3) },
             modifier = Modifier.align(Alignment.CenterHorizontally),
             colors = ButtonDefaults.buttonColors(lightGreen),
         ) {
-            Text(text="Virtuallabs3")
+            Text(text = "Virtuallabs3")
         }
 
         if (showPreview) {
@@ -169,39 +164,7 @@ fun CellBiologyPracticalScreen(navController: NavHostController) {
 }
 
 @Composable
-fun QuestionItem(question: String, answer: String, onAnswerChange: (String) -> Unit) {
-    Column(modifier = Modifier.padding(vertical = 8.dp)) {
-        Text(text = question, fontSize = 15.sp, fontWeight = FontWeight.Medium)
-        OutlinedTextField(
-            value = answer,
-            onValueChange = onAnswerChange,
-            placeholder = { Text("Write your answer here...") },
-            modifier = Modifier.fillMaxWidth()
-        )
-    }
-}
-
-@Composable
-fun PreviewAnswers(questions: List<String>, answers: List<String>) {
-    Spacer(modifier = Modifier.height(16.dp))
-    Text(
-        text = "Your Answers Preview",
-        fontSize = 18.sp,
-        fontWeight = FontWeight.Bold
-    )
-    Spacer(modifier = Modifier.height(8.dp))
-
-    questions.forEachIndexed { i, q ->
-        Text(
-            text = "$q\nAnswer: ${if (answers[i].isBlank()) "Not answered" else answers[i]}",
-            fontSize = 14.sp,
-            modifier = Modifier.padding(vertical = 4.dp)
-        )
-    }
-}
-
-@Composable
-fun CellBiologyTable(headers: List<String>, rows: List<List<String>>) {
+fun CellPhysiologyTable(headers: List<String>, rows: List<List<String>>) {
     Column(
         modifier = Modifier
             .fillMaxWidth()

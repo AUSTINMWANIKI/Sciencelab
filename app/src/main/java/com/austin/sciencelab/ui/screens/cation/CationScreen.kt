@@ -15,9 +15,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavHostController
 import com.austin.sciencelab.R
+import com.austin.sciencelab.navigation.ROUT_VIRTUALLABS1
 import com.austin.sciencelab.ui.screens.physics.PracticalSection
 import com.austin.sciencelab.ui.screens.physics.PreviewAnswers
 import com.austin.sciencelab.ui.screens.physics.QuestionItem
+import com.austin.sciencelab.ui.theme.lightGreen
 
 @Composable
 fun CationAnionPracticalsScreen(navController: NavHostController) {
@@ -131,10 +133,21 @@ fun CationAnionPracticalsScreen(navController: NavHostController) {
         // Preview Button
         Button(
             onClick = { showPreview = !showPreview },
-            modifier = Modifier.align(Alignment.CenterHorizontally)
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            colors = ButtonDefaults.buttonColors(lightGreen)
         ) {
             Text(if (showPreview) "Hide Preview" else "Show Preview")
         }
+
+        Button(
+            onClick = {navController.navigate(ROUT_VIRTUALLABS1)},
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            colors = ButtonDefaults.buttonColors(lightGreen)
+        ) {
+            Text(text = "Virtuallabs1")
+        }
+
+
 
         if (showPreview) {
             PreviewAnswers(questions = questions, answers = answers)

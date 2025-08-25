@@ -52,10 +52,10 @@ fun LoginScreen(
                 Toast.makeText(context, "Invalid Credentials", Toast.LENGTH_SHORT).show()
             } else {
                 if (user.role == "Teacher") {
-                    navController.navigate(ROUT_UPLOADQUESTIONS)
+                    navController.navigate(ROUT_ABOUT)
 
                 } else
-                    navController.navigate(ROUT_ABOUT) {
+                    navController.navigate(ROUT_UPLOADQUESTIONS) {
 
                 }
 

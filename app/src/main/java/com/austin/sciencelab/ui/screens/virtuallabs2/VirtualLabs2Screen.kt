@@ -122,12 +122,12 @@ fun VirtualLabs2Screen(navController: NavController) {
                 ) {
                     val labs = listOf(
                         LabData("Mechanics", R.drawable.stress, ROUT_MECHANICS),
+                        LabData("Practical", R.drawable.bearing, ROUT_PRACTICALS),
                         LabData("Thermodynamics", R.drawable.heat, ROUT_THERMODYNAMICS),
                         LabData("Waves", R.drawable.periodic, ROUT_WAVES),
                         LabData("Optics", R.drawable.light, ROUT_OPTICS),
-                        LabData("Electricity & Magnetism", R.drawable.circuit, ROUT_ELECTRICITYANDMAGNETISM),
-                        LabData("Practical", R.drawable.bearing, ROUT_PRACTICALS),
                         LabData("Geometricoptics", R.drawable.bearing, ROUT_GEOMETRICOPTICS),
+                        LabData("Electricity & Magnetism", R.drawable.circuit, ROUT_ELECTRICITYANDMAGNETISM),
                         LabData("Electricity", R.drawable.bearing, ROUT_ELECTRICITY),
                         LabData("VirtualLabs3", R.drawable.land, ROUT_VIRTUALLABS3),
                     )

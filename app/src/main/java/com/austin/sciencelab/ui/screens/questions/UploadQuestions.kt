@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -16,8 +17,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.*
 import androidx.navigation.NavController
 import androidx.room.*
+import com.austin.sciencelab.navigation.ROUT_LOGIN
 import com.austin.sciencelab.navigation.ROUT_UPLOADQUESTIONS
 import com.austin.sciencelab.navigation.ROUT_VIEWQUESTIONS
+import com.austin.sciencelab.navigation.ROUT_VIRTUALLABS2
 import kotlinx.coroutines.launch
 
 // --------------------- ROOM DATABASE ---------------------
@@ -92,6 +95,18 @@ fun UploadQuestions(
         topBar = {
             TopAppBar(
                 title = { Text("Upload Questions", fontWeight = FontWeight.Bold) },
+                navigationIcon = {
+                    IconButton(
+                        onClick = {navController.navigate(ROUT_LOGIN)},
+                        colors = IconButtonDefaults.iconButtonColors(Color.White),
+
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "menu"
+                        )
+                    }
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xFF4CAF50),
                     titleContentColor = Color.White

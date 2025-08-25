@@ -132,6 +132,7 @@ fun VirtualLabs1Screen(navController: NavController) {
                         LabData("Moles", R.drawable.land, ROUT_MOLES),
                         LabData("Qualitative analysis", R.drawable.land, ROUT_QUALITATIVE),
                         LabData("Organic analysis", R.drawable.land, ROUT_ORGANIC),
+                        LabData("Organicanalysis", R.drawable.land, ROUT_ORGANICANALYSIS),
                         LabData("Compounds", R.drawable.land, ROUT_COMPOUNDS),
                         LabData("Inorganic analysis", R.drawable.land, ROUT_INORGANIC),
                         LabData("Cation-Anion test", R.drawable.land, ROUT_CATION),

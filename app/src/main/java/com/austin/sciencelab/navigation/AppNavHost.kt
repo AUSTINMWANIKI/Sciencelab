@@ -17,13 +17,17 @@ import com.austin.sciencelab.ui.screens.about.AboutScreen
 import com.austin.sciencelab.ui.screens.biology.BiologyLabsScreen
 import com.austin.sciencelab.ui.screens.biology.CellBiologyLabScreen
 import com.austin.sciencelab.ui.screens.biology.CellBiologyPracticalScreen
+import com.austin.sciencelab.ui.screens.biology.CellPhysiologyPracticalScreen
 import com.austin.sciencelab.ui.screens.biology.CellPhysiologyScreen
+import com.austin.sciencelab.ui.screens.biology.GeneticsPracticalScreen
 import com.austin.sciencelab.ui.screens.biology.PlantAnatomyScreen
 import com.austin.sciencelab.ui.screens.biology.SlidePreparationScreen
+import com.austin.sciencelab.ui.screens.biology.SupportMovementPracticalScreen
 import com.austin.sciencelab.ui.screens.biology.TemporarySlidesPracticalsScreen
 import com.austin.sciencelab.ui.screens.chemistry.CationAnionPracticalsScreen
 import com.austin.sciencelab.ui.screens.chemistry.EnergyChangesPracticalsScreen
 import com.austin.sciencelab.ui.screens.chemistry.MolesPracticalScreen
+import com.austin.sciencelab.ui.screens.chemistry.OrganicAnalysisPracticalScreen
 import com.austin.sciencelab.ui.screens.chemistry.OrganicChemistryPracticalsScreen
 import com.austin.sciencelab.ui.screens.chemistry.ReactionRatesPracticalsScreen
 import com.austin.sciencelab.ui.screens.chemistry.SolubilityPracticalsScreen
@@ -109,6 +113,10 @@ fun AppNavHost(
             TemporarySlidesPracticalsScreen(navController)
         }
 
+        composable(ROUT_MOVEMENT) {
+            SupportMovementPracticalScreen(navController)
+        }
+
         composable(ROUT_PRACTICAL) {
             MechanicsPracticalsScreen(navController)
         }
@@ -119,6 +127,10 @@ fun AppNavHost(
             CellPhysiologyScreen(navController)
         }
 
+        composable(ROUT_CELLPHYSIO) {
+            CellPhysiologyPracticalScreen(navController)
+        }
+
         composable(ROUT_PLANTANATOMY) {
             PlantAnatomyScreen(navController)
         }
@@ -126,6 +138,12 @@ fun AppNavHost(
         composable(ROUT_SLIDES) {
             SlidePreparationScreen(navController)
         }
+
+        composable(ROUT_GENETICS) {
+            GeneticsPracticalScreen(navController)
+        }
+
+
 
         composable(ROUT_UPLOADQUESTIONS) {
             UploadQuestions(navController)
@@ -152,11 +170,13 @@ fun AppNavHost(
             OrganicScreen(navController)
         }
 
+        composable(ROUT_ORGANICANALYSIS) {
+            OrganicAnalysisPracticalScreen(navController)
+        }
+
         composable(ROUT_COMPOUNDS) {
             OrganicChemistryPracticalsScreen(navController)
         }
-
-
 
         composable(ROUT_INORGANIC) {
             InorganicScreen(navController)

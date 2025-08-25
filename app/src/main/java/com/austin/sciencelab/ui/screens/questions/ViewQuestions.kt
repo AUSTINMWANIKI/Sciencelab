@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -24,6 +25,8 @@ import androidx.lifecycle.*
 import androidx.navigation.NavController
 import androidx.navigation.compose.*
 import androidx.room.*
+import com.austin.sciencelab.navigation.ROUT_UPLOADQUESTIONS
+import com.austin.sciencelab.navigation.ROUT_VIRTUALLABS2
 import kotlinx.coroutines.launch
 // --------------------- VIEW SCREEN ---------------------
 @OptIn(ExperimentalMaterial3Api::class)
@@ -36,6 +39,17 @@ fun ViewQuestions(navController: NavController, viewModel: QuestionViewModel = a
         topBar = {
             TopAppBar(
                 title = { Text("View Questions", fontWeight = FontWeight.Bold) },
+                navigationIcon = {
+                    IconButton(
+                        onClick = {navController.navigate(ROUT_UPLOADQUESTIONS)},
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "menu",
+
+                        )
+                    }
+                },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFF388E3C), titleContentColor = Color.White)
             )
         },
